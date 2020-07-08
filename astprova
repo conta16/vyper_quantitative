@@ -1,0 +1,121 @@
+{
+	"contract_name": "prova.vy",
+	"ast": {
+		"name": null,
+		 "body": [
+			{"name": "calculate",
+			 "body": [
+				{"target": 
+					{"ast_type": "Name",
+					 "end_col_offset": 5,
+					 "src": "29:1:0",
+					 "node_id": 4,
+					 "lineno": 3,
+					 "col_offset": 4,
+					 "id": "x",
+					 "end_lineno": 3
+				},
+				 "annotation": {
+					 "ast_type": "Name",
+					 "end_col_offset": 13, 
+					 "src": "32:6:0", 
+					 "node_id": 6,
+					 "lineno": 3,
+					 "col_offset": 7,
+					 "id": "int128",
+					 "end_lineno": 3
+				},
+				 "ast_type": "AnnAssign",
+				 "end_col_offset": 19,
+				 "src": "29:15:0",
+				 "simple": 1,
+				 "node_id": 3,
+				 "lineno": 3,
+				 "col_offset": 4,
+				 "end_lineno": 3,
+				 "value": {
+					"left": {
+						 "ast_type": "Int",
+						 "end_col_offset": 17,
+						 "src": "41:1:0",
+						 "node_id": 9,
+						 "lineno": 3,
+						 "col_offset": 16,
+						 "end_lineno": 3,
+						 "value": 5
+					},
+					 "op": {
+						 "ast_type": "Add",
+						 "end_col_offset": 19,
+						 "src": "41:3:0",
+						 "node_id": 10,
+						 "lineno": 3,
+						 "col_offset": 16,
+						 "end_lineno": 3
+					},
+					 "ast_type": "BinOp", 
+					 "end_col_offset": 19,
+					 "right": {
+						 "ast_type": "Int",
+						 "end_col_offset": 19,
+						 "src": "43:1:0",
+						 "node_id": 11,
+						 "lineno": 3,
+						 "col_offset": 18,
+						 "end_lineno": 3,
+						 "value": 2
+					},
+					 "src": "41:3:0",
+					 "node_id": 8,
+					 "lineno": 3,
+					 "col_offset": 16,
+					 "end_lineno": 3
+					}
+				}
+			],
+			 "decorator_list": [
+				{
+				 "ast_type": "Name",
+				 "end_col_offset": 7,
+				 "src": "1:6:0",
+				 "node_id": 12,
+				 "lineno": 1,
+				 "col_offset": 1,
+				 "id": "public",
+				 "end_lineno": 1
+				}
+			],
+			 "pos": null,
+			 "ast_type": "FunctionDef",
+			 "end_col_offset": 19,
+			 "doc_string": null,
+			 "returns": null,
+			 "src": "0:44:0",
+			 "node_id": 1,
+			 "args": {
+				"ast_type": "arguments",
+				 "end_col_offset": 1,
+				 "default": null,
+				 "src": "0:1:0",
+				 "defaults": [],
+				 "args": [],
+				 "node_id": 2,
+				 "lineno": 1,
+				 "col_offset": 0,
+				 "end_lineno": 1
+			},
+			 "lineno": 1,
+			 "col_offset": 0,
+			 "end_lineno": 3
+			}
+		],
+		 "ast_type": "Module",
+		 "end_col_offset": 19,
+		 "doc_string": null,
+		 "src": "0:44:0",
+		 "node_id": 0,
+		 "lineno": 1,
+		 "col_offset": 0,
+		 "end_lineno": 3
+	}
+}
