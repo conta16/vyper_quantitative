@@ -1,121 +1,656 @@
+ast_struct
+{'body': [<_ast.FunctionDef object at 0x7fac414ddac8>], 'first_token': Token(type=57, string='#numb: public(int128)', start=(1, 0), end=(1, 21), line='#numb: public(int128)\n', index=0, startpos=0, endpos=21), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 0, 'ast_type': 'Module', 'lineno': 1, 'col_offset': 0, 'end_lineno': 14, 'end_col_offset': 10, 'src': '0:234:0', 'node_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1'}
+ast_struct
+{'name': 'calculate', 'args': <_ast.arguments object at 0x7fac414dda90>, 'body': [<_ast.AnnAssign object at 0x7fac414ddba8>, <_ast.AnnAssign object at 0x7fac414ddc50>, <_ast.AnnAssign object at 0x7fac414ddda0>, <_ast.If object at 0x7fac414dde80>, <_ast.For object at 0x7fac414e7128>, <_ast.While object at 0x7fac414e7320>], 'decorator_list': [<_ast.Name object at 0x7fac414e7438>], 'returns': None, 'lineno': 3, 'col_offset': 0, 'first_token': Token(type=53, string='@', start=(3, 0), end=(3, 1), line='@public\n', index=3, startpos=23, endpos=24), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 1, 'ast_type': 'FunctionDef', 'end_lineno': 14, 'end_col_offset': 10, 'src': '23:211:0', 'node_source_code': '@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1'}
+ast_struct
+{'args': [<_ast.arg object at 0x7fac414ddb38>], 'vararg': None, 'kwonlyargs': [], 'kw_defaults': [], 'kwarg': None, 'defaults': [], 'first_token': Token(type=1, string='y', start=(4, 14), end=(4, 15), line='def calculate(y: int128):\n', index=9, startpos=45, endpos=46), 'last_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 2, 'ast_type': 'arguments', 'lineno': 4, 'col_offset': 14, 'end_lineno': 4, 'end_col_offset': 23, 'src': '45:9:0', 'node_source_code': 'y: int128'}
+ast_struct
+{'arg': 'y', 'annotation': <_ast.Name object at 0x7fac414ddb00>, 'lineno': 4, 'col_offset': 14, 'first_token': Token(type=1, string='y', start=(4, 14), end=(4, 15), line='def calculate(y: int128):\n', index=9, startpos=45, endpos=46), 'last_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 3, 'ast_type': 'arg', 'end_lineno': 4, 'end_col_offset': 23, 'src': '45:9:0', 'node_source_code': 'y: int128'}
+ast_struct
+{'id': 'int128', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 4, 'col_offset': 17, 'first_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'last_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 4, 'ast_type': 'Name', 'end_lineno': 4, 'end_col_offset': 23, 'src': '48:6:0', 'node_source_code': 'int128'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac414ddb70>, 'annotation': <_ast.Name object at 0x7fac414ddc18>, 'value': <_ast.NameConstant object at 0x7fac414ddbe0>, 'simple': 1, 'lineno': 5, 'col_offset': 4, 'first_token': Token(type=1, string='tes', start=(5, 4), end=(5, 7), line='    tes: bool = True\n', index=16, startpos=61, endpos=64), 'last_token': Token(type=1, string='True', start=(5, 16), end=(5, 20), line='    tes: bool = True\n', index=20, startpos=73, endpos=77), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 6, 'ast_type': 'AnnAssign', 'end_lineno': 5, 'end_col_offset': 20, 'src': '61:16:0', 'node_source_code': 'tes: bool = True'}
+ast_struct
+{'id': 'tes', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 5, 'col_offset': 4, 'first_token': Token(type=1, string='tes', start=(5, 4), end=(5, 7), line='    tes: bool = True\n', index=16, startpos=61, endpos=64), 'last_token': Token(type=1, string='tes', start=(5, 4), end=(5, 7), line='    tes: bool = True\n', index=16, startpos=61, endpos=64), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 7, 'ast_type': 'Name', 'end_lineno': 5, 'end_col_offset': 7, 'src': '61:3:0', 'node_source_code': 'tes'}
+ast_struct
+{'id': 'bool', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 5, 'col_offset': 9, 'first_token': Token(type=1, string='bool', start=(5, 9), end=(5, 13), line='    tes: bool = True\n', index=18, startpos=66, endpos=70), 'last_token': Token(type=1, string='bool', start=(5, 9), end=(5, 13), line='    tes: bool = True\n', index=18, startpos=66, endpos=70), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 9, 'ast_type': 'Name', 'end_lineno': 5, 'end_col_offset': 13, 'src': '66:4:0', 'node_source_code': 'bool'}
+ast_struct
+{'value': True, 'lineno': 5, 'col_offset': 16, 'first_token': Token(type=1, string='True', start=(5, 16), end=(5, 20), line='    tes: bool = True\n', index=20, startpos=73, endpos=77), 'last_token': Token(type=1, string='True', start=(5, 16), end=(5, 20), line='    tes: bool = True\n', index=20, startpos=73, endpos=77), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 11, 'ast_type': 'NameConstant', 'end_lineno': 5, 'end_col_offset': 20, 'src': '73:4:0', 'node_source_code': 'True'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac414ddc88>, 'annotation': <_ast.Name object at 0x7fac414ddcc0>, 'value': <_ast.BinOp object at 0x7fac414ddcf8>, 'simple': 1, 'lineno': 6, 'col_offset': 4, 'first_token': Token(type=1, string='x', start=(6, 4), end=(6, 5), line='    x: int128 = 5+2\n', index=22, startpos=82, endpos=83), 'last_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 12, 'ast_type': 'AnnAssign', 'end_lineno': 6, 'end_col_offset': 19, 'src': '82:15:0', 'node_source_code': 'x: int128 = 5+2'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 6, 'col_offset': 4, 'first_token': Token(type=1, string='x', start=(6, 4), end=(6, 5), line='    x: int128 = 5+2\n', index=22, startpos=82, endpos=83), 'last_token': Token(type=1, string='x', start=(6, 4), end=(6, 5), line='    x: int128 = 5+2\n', index=22, startpos=82, endpos=83), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 13, 'ast_type': 'Name', 'end_lineno': 6, 'end_col_offset': 5, 'src': '82:1:0', 'node_source_code': 'x'}
+ast_struct
+{'id': 'int128', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 6, 'col_offset': 7, 'first_token': Token(type=1, string='int128', start=(6, 7), end=(6, 13), line='    x: int128 = 5+2\n', index=24, startpos=85, endpos=91), 'last_token': Token(type=1, string='int128', start=(6, 7), end=(6, 13), line='    x: int128 = 5+2\n', index=24, startpos=85, endpos=91), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 15, 'ast_type': 'Name', 'end_lineno': 6, 'end_col_offset': 13, 'src': '85:6:0', 'node_source_code': 'int128'}
+ast_struct
+{'left': <_ast.Num object at 0x7fac414ddd30>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'right': <_ast.Num object at 0x7fac414ddd68>, 'lineno': 6, 'col_offset': 16, 'first_token': Token(type=2, string='5', start=(6, 16), end=(6, 17), line='    x: int128 = 5+2\n', index=26, startpos=94, endpos=95), 'last_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 17, 'ast_type': 'BinOp', 'end_lineno': 6, 'end_col_offset': 19, 'src': '94:3:0', 'node_source_code': '5+2'}
+ast_struct
+{'n': 5, 'lineno': 6, 'col_offset': 16, 'first_token': Token(type=2, string='5', start=(6, 16), end=(6, 17), line='    x: int128 = 5+2\n', index=26, startpos=94, endpos=95), 'last_token': Token(type=2, string='5', start=(6, 16), end=(6, 17), line='    x: int128 = 5+2\n', index=26, startpos=94, endpos=95), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 18, 'ast_type': 'Int', 'end_lineno': 6, 'end_col_offset': 17, 'src': '94:1:0', 'node_source_code': '5'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 2, 'lineno': 6, 'col_offset': 18, 'first_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'last_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 20, 'ast_type': 'Int', 'end_lineno': 6, 'end_col_offset': 19, 'src': '96:1:0', 'node_source_code': '2'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac414dddd8>, 'annotation': <_ast.Name object at 0x7fac414dde10>, 'value': <_ast.Num object at 0x7fac414dde48>, 'simple': 1, 'lineno': 7, 'col_offset': 4, 'first_token': Token(type=1, string='z', start=(7, 4), end=(7, 5), line='    z: int128 = 10\n', index=30, startpos=102, endpos=103), 'last_token': Token(type=2, string='10', start=(7, 16), end=(7, 18), line='    z: int128 = 10\n', index=34, startpos=114, endpos=116), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 21, 'ast_type': 'AnnAssign', 'end_lineno': 7, 'end_col_offset': 18, 'src': '102:14:0', 'node_source_code': 'z: int128 = 10'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 7, 'col_offset': 4, 'first_token': Token(type=1, string='z', start=(7, 4), end=(7, 5), line='    z: int128 = 10\n', index=30, startpos=102, endpos=103), 'last_token': Token(type=1, string='z', start=(7, 4), end=(7, 5), line='    z: int128 = 10\n', index=30, startpos=102, endpos=103), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 22, 'ast_type': 'Name', 'end_lineno': 7, 'end_col_offset': 5, 'src': '102:1:0', 'node_source_code': 'z'}
+ast_struct
+{'id': 'int128', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 7, 'col_offset': 7, 'first_token': Token(type=1, string='int128', start=(7, 7), end=(7, 13), line='    z: int128 = 10\n', index=32, startpos=105, endpos=111), 'last_token': Token(type=1, string='int128', start=(7, 7), end=(7, 13), line='    z: int128 = 10\n', index=32, startpos=105, endpos=111), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 24, 'ast_type': 'Name', 'end_lineno': 7, 'end_col_offset': 13, 'src': '105:6:0', 'node_source_code': 'int128'}
+ast_struct
+{'n': 10, 'lineno': 7, 'col_offset': 16, 'first_token': Token(type=2, string='10', start=(7, 16), end=(7, 18), line='    z: int128 = 10\n', index=34, startpos=114, endpos=116), 'last_token': Token(type=2, string='10', start=(7, 16), end=(7, 18), line='    z: int128 = 10\n', index=34, startpos=114, endpos=116), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 26, 'ast_type': 'Int', 'end_lineno': 7, 'end_col_offset': 18, 'src': '114:2:0', 'node_source_code': '10'}
+ast_struct
+{'test': <_ast.Compare object at 0x7fac414ddeb8>, 'body': [<_ast.Assign object at 0x7fac414dd748>, <_ast.Assign object at 0x7fac414dd5c0>], 'orelse': [], 'lineno': 8, 'col_offset': 4, 'first_token': Token(type=1, string='if', start=(8, 4), end=(8, 6), line='    if (z > x + y):\n', index=36, startpos=121, endpos=123), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 27, 'ast_type': 'If', 'end_lineno': 10, 'end_col_offset': 14, 'src': '121:49:0', 'node_source_code': 'if (z > x + y):\n     z = x * y - 2\n     z = z + 1'}
+ast_struct
+{'left': <_ast.Name object at 0x7fac414dd588>, 'ops': [<_ast.Gt object at 0x7fac42e227f0>], 'comparators': [<_ast.BinOp object at 0x7fac414dd6d8>], 'lineno': 8, 'col_offset': 8, 'first_token': Token(type=1, string='z', start=(8, 8), end=(8, 9), line='    if (z > x + y):\n', index=38, startpos=125, endpos=126), 'last_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 28, 'ast_type': 'Compare', 'end_lineno': 8, 'end_col_offset': 17, 'src': '125:9:0', 'node_source_code': 'z > x + y'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 8, 'col_offset': 8, 'first_token': Token(type=1, string='z', start=(8, 8), end=(8, 9), line='    if (z > x + y):\n', index=38, startpos=125, endpos=126), 'last_token': Token(type=1, string='z', start=(8, 8), end=(8, 9), line='    if (z > x + y):\n', index=38, startpos=125, endpos=126), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 29, 'ast_type': 'Name', 'end_lineno': 8, 'end_col_offset': 9, 'src': '125:1:0', 'node_source_code': 'z'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 31, 'ast_type': 'Gt', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'left': <_ast.Name object at 0x7fac414dd6a0>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'right': <_ast.Name object at 0x7fac414dd9e8>, 'lineno': 8, 'col_offset': 12, 'first_token': Token(type=1, string='x', start=(8, 12), end=(8, 13), line='    if (z > x + y):\n', index=40, startpos=129, endpos=130), 'last_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 32, 'ast_type': 'BinOp', 'end_lineno': 8, 'end_col_offset': 17, 'src': '129:5:0', 'node_source_code': 'x + y'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 8, 'col_offset': 12, 'first_token': Token(type=1, string='x', start=(8, 12), end=(8, 13), line='    if (z > x + y):\n', index=40, startpos=129, endpos=130), 'last_token': Token(type=1, string='x', start=(8, 12), end=(8, 13), line='    if (z > x + y):\n', index=40, startpos=129, endpos=130), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 33, 'ast_type': 'Name', 'end_lineno': 8, 'end_col_offset': 13, 'src': '129:1:0', 'node_source_code': 'x'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'id': 'y', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 8, 'col_offset': 16, 'first_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'last_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 36, 'ast_type': 'Name', 'end_lineno': 8, 'end_col_offset': 17, 'src': '133:1:0', 'node_source_code': 'y'}
+ast_struct
+{'targets': [<_ast.Name object at 0x7fac414dd940>], 'value': <_ast.BinOp object at 0x7fac414ddef0>, 'lineno': 9, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(9, 5), end=(9, 6), line='     z = x * y - 2\n', index=47, startpos=142, endpos=143), 'last_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 38, 'ast_type': 'Assign', 'end_lineno': 9, 'end_col_offset': 18, 'src': '142:13:0', 'node_source_code': 'z = x * y - 2'}
+ast_struct
+{'left': <_ast.BinOp object at 0x7fac414ddf28>, 'op': <_ast.Sub object at 0x7fac42e20048>, 'right': <_ast.Num object at 0x7fac414ddfd0>, 'lineno': 9, 'col_offset': 9, 'first_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'last_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 41, 'ast_type': 'BinOp', 'end_lineno': 9, 'end_col_offset': 18, 'src': '146:9:0', 'node_source_code': 'x * y - 2'}
+ast_struct
+{'left': <_ast.Name object at 0x7fac414ddf60>, 'op': <_ast.Mult object at 0x7fac42e20160>, 'right': <_ast.Name object at 0x7fac414ddf98>, 'lineno': 9, 'col_offset': 9, 'first_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'last_token': Token(type=1, string='y', start=(9, 13), end=(9, 14), line='     z = x * y - 2\n', index=51, startpos=150, endpos=151), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 42, 'ast_type': 'BinOp', 'end_lineno': 9, 'end_col_offset': 14, 'src': '146:5:0', 'node_source_code': 'x * y'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 9, 'col_offset': 9, 'first_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'last_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 43, 'ast_type': 'Name', 'end_lineno': 9, 'end_col_offset': 10, 'src': '146:1:0', 'node_source_code': 'x'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 45, 'ast_type': 'Mult', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'id': 'y', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 9, 'col_offset': 13, 'first_token': Token(type=1, string='y', start=(9, 13), end=(9, 14), line='     z = x * y - 2\n', index=51, startpos=150, endpos=151), 'last_token': Token(type=1, string='y', start=(9, 13), end=(9, 14), line='     z = x * y - 2\n', index=51, startpos=150, endpos=151), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 46, 'ast_type': 'Name', 'end_lineno': 9, 'end_col_offset': 14, 'src': '150:1:0', 'node_source_code': 'y'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 48, 'ast_type': 'Sub', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 2, 'lineno': 9, 'col_offset': 17, 'first_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'last_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 49, 'ast_type': 'Int', 'end_lineno': 9, 'end_col_offset': 18, 'src': '154:1:0', 'node_source_code': '2'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 9, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(9, 5), end=(9, 6), line='     z = x * y - 2\n', index=47, startpos=142, endpos=143), 'last_token': Token(type=1, string='z', start=(9, 5), end=(9, 6), line='     z = x * y - 2\n', index=47, startpos=142, endpos=143), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 39, 'ast_type': 'Name', 'end_lineno': 9, 'end_col_offset': 6, 'src': '142:1:0', 'node_source_code': 'z'}
+ast_struct
+{'targets': [<_ast.Name object at 0x7fac414e7048>], 'value': <_ast.BinOp object at 0x7fac414e7080>, 'lineno': 10, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(10, 5), end=(10, 6), line='     z = z + 1\n', index=55, startpos=161, endpos=162), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 50, 'ast_type': 'Assign', 'end_lineno': 10, 'end_col_offset': 14, 'src': '161:9:0', 'node_source_code': 'z = z + 1'}
+ast_struct
+{'left': <_ast.Name object at 0x7fac414e70b8>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'right': <_ast.Num object at 0x7fac414e70f0>, 'lineno': 10, 'col_offset': 9, 'first_token': Token(type=1, string='z', start=(10, 9), end=(10, 10), line='     z = z + 1\n', index=57, startpos=165, endpos=166), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 53, 'ast_type': 'BinOp', 'end_lineno': 10, 'end_col_offset': 14, 'src': '165:5:0', 'node_source_code': 'z + 1'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 10, 'col_offset': 9, 'first_token': Token(type=1, string='z', start=(10, 9), end=(10, 10), line='     z = z + 1\n', index=57, startpos=165, endpos=166), 'last_token': Token(type=1, string='z', start=(10, 9), end=(10, 10), line='     z = z + 1\n', index=57, startpos=165, endpos=166), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 54, 'ast_type': 'Name', 'end_lineno': 10, 'end_col_offset': 10, 'src': '165:1:0', 'node_source_code': 'z'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 1, 'lineno': 10, 'col_offset': 13, 'first_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 57, 'ast_type': 'Int', 'end_lineno': 10, 'end_col_offset': 14, 'src': '169:1:0', 'node_source_code': '1'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 10, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(10, 5), end=(10, 6), line='     z = z + 1\n', index=55, startpos=161, endpos=162), 'last_token': Token(type=1, string='z', start=(10, 5), end=(10, 6), line='     z = z + 1\n', index=55, startpos=161, endpos=162), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 51, 'ast_type': 'Name', 'end_lineno': 10, 'end_col_offset': 6, 'src': '161:1:0', 'node_source_code': 'z'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac414e7160>, 'iter': <_ast.Call object at 0x7fac414e7198>, 'body': [<_ast.AugAssign object at 0x7fac414e7278>], 'orelse': [], 'lineno': 11, 'col_offset': 4, 'first_token': Token(type=1, string='for', start=(11, 4), end=(11, 7), line='    for i in range(5,10):\n', index=62, startpos=175, endpos=178), 'last_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 58, 'ast_type': 'For', 'end_lineno': 12, 'end_col_offset': 10, 'src': '175:32:0', 'node_source_code': 'for i in range(5,10):\n      x+=z'}
+ast_struct
+{'id': 'i', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 11, 'col_offset': 8, 'first_token': Token(type=1, string='i', start=(11, 8), end=(11, 9), line='    for i in range(5,10):\n', index=63, startpos=179, endpos=180), 'last_token': Token(type=1, string='i', start=(11, 8), end=(11, 9), line='    for i in range(5,10):\n', index=63, startpos=179, endpos=180), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 59, 'ast_type': 'Name', 'end_lineno': 11, 'end_col_offset': 9, 'src': '179:1:0', 'node_source_code': 'i'}
+ast_struct
+{'func': <_ast.Name object at 0x7fac414e71d0>, 'args': [<_ast.Num object at 0x7fac414e7208>, <_ast.Num object at 0x7fac414e7240>], 'keywords': [], 'lineno': 11, 'col_offset': 13, 'first_token': Token(type=1, string='range', start=(11, 13), end=(11, 18), line='    for i in range(5,10):\n', index=65, startpos=184, endpos=189), 'last_token': Token(type=53, string=')', start=(11, 23), end=(11, 24), line='    for i in range(5,10):\n', index=70, startpos=194, endpos=195), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 61, 'ast_type': 'Call', 'end_lineno': 11, 'end_col_offset': 24, 'src': '184:11:0', 'node_source_code': 'range(5,10)'}
+ast_struct
+{'id': 'range', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 11, 'col_offset': 13, 'first_token': Token(type=1, string='range', start=(11, 13), end=(11, 18), line='    for i in range(5,10):\n', index=65, startpos=184, endpos=189), 'last_token': Token(type=1, string='range', start=(11, 13), end=(11, 18), line='    for i in range(5,10):\n', index=65, startpos=184, endpos=189), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 62, 'ast_type': 'Name', 'end_lineno': 11, 'end_col_offset': 18, 'src': '184:5:0', 'node_source_code': 'range'}
+ast_struct
+{'n': 5, 'lineno': 11, 'col_offset': 19, 'first_token': Token(type=2, string='5', start=(11, 19), end=(11, 20), line='    for i in range(5,10):\n', index=67, startpos=190, endpos=191), 'last_token': Token(type=2, string='5', start=(11, 19), end=(11, 20), line='    for i in range(5,10):\n', index=67, startpos=190, endpos=191), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 64, 'ast_type': 'Int', 'end_lineno': 11, 'end_col_offset': 20, 'src': '190:1:0', 'node_source_code': '5'}
+ast_struct
+{'n': 10, 'lineno': 11, 'col_offset': 21, 'first_token': Token(type=2, string='10', start=(11, 21), end=(11, 23), line='    for i in range(5,10):\n', index=69, startpos=192, endpos=194), 'last_token': Token(type=2, string='10', start=(11, 21), end=(11, 23), line='    for i in range(5,10):\n', index=69, startpos=192, endpos=194), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 65, 'ast_type': 'Int', 'end_lineno': 11, 'end_col_offset': 23, 'src': '192:2:0', 'node_source_code': '10'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac414e72b0>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'value': <_ast.Name object at 0x7fac414e72e8>, 'lineno': 12, 'col_offset': 6, 'first_token': Token(type=1, string='x', start=(12, 6), end=(12, 7), line='      x+=z\n', index=74, startpos=203, endpos=204), 'last_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 66, 'ast_type': 'AugAssign', 'end_lineno': 12, 'end_col_offset': 10, 'src': '203:4:0', 'node_source_code': 'x+=z'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 12, 'col_offset': 6, 'first_token': Token(type=1, string='x', start=(12, 6), end=(12, 7), line='      x+=z\n', index=74, startpos=203, endpos=204), 'last_token': Token(type=1, string='x', start=(12, 6), end=(12, 7), line='      x+=z\n', index=74, startpos=203, endpos=204), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 67, 'ast_type': 'Name', 'end_lineno': 12, 'end_col_offset': 7, 'src': '203:1:0', 'node_source_code': 'x'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 12, 'col_offset': 9, 'first_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'last_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 70, 'ast_type': 'Name', 'end_lineno': 12, 'end_col_offset': 10, 'src': '206:1:0', 'node_source_code': 'z'}
+ast_struct
+{'test': <_ast.Name object at 0x7fac414e7358>, 'body': [<_ast.AugAssign object at 0x7fac414e7390>], 'orelse': [], 'lineno': 13, 'col_offset': 4, 'first_token': Token(type=1, string='while', start=(13, 4), end=(13, 9), line='    while(tes):\n', index=79, startpos=212, endpos=217), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 72, 'ast_type': 'While', 'end_lineno': 14, 'end_col_offset': 10, 'src': '212:22:0', 'node_source_code': 'while(tes):\n      z+=1'}
+ast_struct
+{'id': 'tes', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 13, 'col_offset': 10, 'first_token': Token(type=1, string='tes', start=(13, 10), end=(13, 13), line='    while(tes):\n', index=81, startpos=218, endpos=221), 'last_token': Token(type=1, string='tes', start=(13, 10), end=(13, 13), line='    while(tes):\n', index=81, startpos=218, endpos=221), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 73, 'ast_type': 'Name', 'end_lineno': 13, 'end_col_offset': 13, 'src': '218:3:0', 'node_source_code': 'tes'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac414e73c8>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'value': <_ast.Num object at 0x7fac414e7400>, 'lineno': 14, 'col_offset': 6, 'first_token': Token(type=1, string='z', start=(14, 6), end=(14, 7), line='      z+=1\n', index=86, startpos=230, endpos=231), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 75, 'ast_type': 'AugAssign', 'end_lineno': 14, 'end_col_offset': 10, 'src': '230:4:0', 'node_source_code': 'z+=1'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 14, 'col_offset': 6, 'first_token': Token(type=1, string='z', start=(14, 6), end=(14, 7), line='      z+=1\n', index=86, startpos=230, endpos=231), 'last_token': Token(type=1, string='z', start=(14, 6), end=(14, 7), line='      z+=1\n', index=86, startpos=230, endpos=231), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 76, 'ast_type': 'Name', 'end_lineno': 14, 'end_col_offset': 7, 'src': '230:1:0', 'node_source_code': 'z'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 1, 'lineno': 14, 'col_offset': 9, 'first_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 79, 'ast_type': 'Int', 'end_lineno': 14, 'end_col_offset': 10, 'src': '233:1:0', 'node_source_code': '1'}
+ast_struct
+{'id': 'public', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 3, 'col_offset': 1, 'first_token': Token(type=1, string='public', start=(3, 1), end=(3, 7), line='@public\n', index=4, startpos=24, endpos=30), 'last_token': Token(type=1, string='public', start=(3, 1), end=(3, 7), line='@public\n', index=4, startpos=24, endpos=30), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n', 'node_id': 80, 'ast_type': 'Name', 'end_lineno': 3, 'end_col_offset': 7, 'src': '24:6:0', 'node_source_code': 'public'}
+ast_struct
+{'body': [<_ast.FunctionDef object at 0x7fac414e7b38>], 'first_token': Token(type=57, string='#numb: public(int128)', start=(1, 0), end=(1, 21), line='#numb: public(int128)\n', index=0, startpos=0, endpos=21), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 0, 'ast_type': 'Module', 'lineno': 1, 'col_offset': 0, 'end_lineno': 14, 'end_col_offset': 10, 'src': '0:234:0', 'node_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1'}
+ast_struct
+{'name': 'calculate', 'args': <_ast.arguments object at 0x7fac412789e8>, 'body': [<_ast.AnnAssign object at 0x7fac41278a90>, <_ast.AnnAssign object at 0x7fac41278b70>, <_ast.AnnAssign object at 0x7fac41278cc0>, <_ast.If object at 0x7fac41278da0>, <_ast.For object at 0x7fac412800f0>, <_ast.While object at 0x7fac412802e8>], 'decorator_list': [<_ast.Name object at 0x7fac41280400>], 'returns': None, 'lineno': 3, 'col_offset': 0, 'first_token': Token(type=53, string='@', start=(3, 0), end=(3, 1), line='@public\n', index=3, startpos=23, endpos=24), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 1, 'ast_type': 'FunctionDef', 'end_lineno': 14, 'end_col_offset': 10, 'src': '23:211:0', 'node_source_code': '@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1'}
+ast_struct
+{'args': [<_ast.arg object at 0x7fac41278a20>], 'vararg': None, 'kwonlyargs': [], 'kw_defaults': [], 'kwarg': None, 'defaults': [], 'first_token': Token(type=1, string='y', start=(4, 14), end=(4, 15), line='def calculate(y: int128):\n', index=9, startpos=45, endpos=46), 'last_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 2, 'ast_type': 'arguments', 'lineno': 4, 'col_offset': 14, 'end_lineno': 4, 'end_col_offset': 23, 'src': '45:9:0', 'node_source_code': 'y: int128'}
+ast_struct
+{'arg': 'y', 'annotation': <_ast.Name object at 0x7fac41278a58>, 'lineno': 4, 'col_offset': 14, 'first_token': Token(type=1, string='y', start=(4, 14), end=(4, 15), line='def calculate(y: int128):\n', index=9, startpos=45, endpos=46), 'last_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 3, 'ast_type': 'arg', 'end_lineno': 4, 'end_col_offset': 23, 'src': '45:9:0', 'node_source_code': 'y: int128'}
+ast_struct
+{'id': 'int128', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 4, 'col_offset': 17, 'first_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'last_token': Token(type=1, string='int128', start=(4, 17), end=(4, 23), line='def calculate(y: int128):\n', index=11, startpos=48, endpos=54), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 4, 'ast_type': 'Name', 'end_lineno': 4, 'end_col_offset': 23, 'src': '48:6:0', 'node_source_code': 'int128'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac41278ac8>, 'annotation': <_ast.Name object at 0x7fac41278b00>, 'value': <_ast.NameConstant object at 0x7fac41278b38>, 'simple': 1, 'lineno': 5, 'col_offset': 4, 'first_token': Token(type=1, string='tes', start=(5, 4), end=(5, 7), line='    tes: bool = True\n', index=16, startpos=61, endpos=64), 'last_token': Token(type=1, string='True', start=(5, 16), end=(5, 20), line='    tes: bool = True\n', index=20, startpos=73, endpos=77), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 6, 'ast_type': 'AnnAssign', 'end_lineno': 5, 'end_col_offset': 20, 'src': '61:16:0', 'node_source_code': 'tes: bool = True'}
+ast_struct
+{'id': 'tes', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 5, 'col_offset': 4, 'first_token': Token(type=1, string='tes', start=(5, 4), end=(5, 7), line='    tes: bool = True\n', index=16, startpos=61, endpos=64), 'last_token': Token(type=1, string='tes', start=(5, 4), end=(5, 7), line='    tes: bool = True\n', index=16, startpos=61, endpos=64), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 7, 'ast_type': 'Name', 'end_lineno': 5, 'end_col_offset': 7, 'src': '61:3:0', 'node_source_code': 'tes'}
+ast_struct
+{'id': 'bool', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 5, 'col_offset': 9, 'first_token': Token(type=1, string='bool', start=(5, 9), end=(5, 13), line='    tes: bool = True\n', index=18, startpos=66, endpos=70), 'last_token': Token(type=1, string='bool', start=(5, 9), end=(5, 13), line='    tes: bool = True\n', index=18, startpos=66, endpos=70), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 9, 'ast_type': 'Name', 'end_lineno': 5, 'end_col_offset': 13, 'src': '66:4:0', 'node_source_code': 'bool'}
+ast_struct
+{'value': True, 'lineno': 5, 'col_offset': 16, 'first_token': Token(type=1, string='True', start=(5, 16), end=(5, 20), line='    tes: bool = True\n', index=20, startpos=73, endpos=77), 'last_token': Token(type=1, string='True', start=(5, 16), end=(5, 20), line='    tes: bool = True\n', index=20, startpos=73, endpos=77), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 11, 'ast_type': 'NameConstant', 'end_lineno': 5, 'end_col_offset': 20, 'src': '73:4:0', 'node_source_code': 'True'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac41278ba8>, 'annotation': <_ast.Name object at 0x7fac41278be0>, 'value': <_ast.BinOp object at 0x7fac41278c18>, 'simple': 1, 'lineno': 6, 'col_offset': 4, 'first_token': Token(type=1, string='x', start=(6, 4), end=(6, 5), line='    x: int128 = 5+2\n', index=22, startpos=82, endpos=83), 'last_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 12, 'ast_type': 'AnnAssign', 'end_lineno': 6, 'end_col_offset': 19, 'src': '82:15:0', 'node_source_code': 'x: int128 = 5+2'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 6, 'col_offset': 4, 'first_token': Token(type=1, string='x', start=(6, 4), end=(6, 5), line='    x: int128 = 5+2\n', index=22, startpos=82, endpos=83), 'last_token': Token(type=1, string='x', start=(6, 4), end=(6, 5), line='    x: int128 = 5+2\n', index=22, startpos=82, endpos=83), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 13, 'ast_type': 'Name', 'end_lineno': 6, 'end_col_offset': 5, 'src': '82:1:0', 'node_source_code': 'x'}
+ast_struct
+{'id': 'int128', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 6, 'col_offset': 7, 'first_token': Token(type=1, string='int128', start=(6, 7), end=(6, 13), line='    x: int128 = 5+2\n', index=24, startpos=85, endpos=91), 'last_token': Token(type=1, string='int128', start=(6, 7), end=(6, 13), line='    x: int128 = 5+2\n', index=24, startpos=85, endpos=91), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 15, 'ast_type': 'Name', 'end_lineno': 6, 'end_col_offset': 13, 'src': '85:6:0', 'node_source_code': 'int128'}
+ast_struct
+{'left': <_ast.Num object at 0x7fac41278c50>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'right': <_ast.Num object at 0x7fac41278c88>, 'lineno': 6, 'col_offset': 16, 'first_token': Token(type=2, string='5', start=(6, 16), end=(6, 17), line='    x: int128 = 5+2\n', index=26, startpos=94, endpos=95), 'last_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 17, 'ast_type': 'BinOp', 'end_lineno': 6, 'end_col_offset': 19, 'src': '94:3:0', 'node_source_code': '5+2'}
+ast_struct
+{'n': 5, 'lineno': 6, 'col_offset': 16, 'first_token': Token(type=2, string='5', start=(6, 16), end=(6, 17), line='    x: int128 = 5+2\n', index=26, startpos=94, endpos=95), 'last_token': Token(type=2, string='5', start=(6, 16), end=(6, 17), line='    x: int128 = 5+2\n', index=26, startpos=94, endpos=95), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 18, 'ast_type': 'Int', 'end_lineno': 6, 'end_col_offset': 17, 'src': '94:1:0', 'node_source_code': '5'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 2, 'lineno': 6, 'col_offset': 18, 'first_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'last_token': Token(type=2, string='2', start=(6, 18), end=(6, 19), line='    x: int128 = 5+2\n', index=28, startpos=96, endpos=97), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 20, 'ast_type': 'Int', 'end_lineno': 6, 'end_col_offset': 19, 'src': '96:1:0', 'node_source_code': '2'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac41278cf8>, 'annotation': <_ast.Name object at 0x7fac41278d30>, 'value': <_ast.Num object at 0x7fac41278d68>, 'simple': 1, 'lineno': 7, 'col_offset': 4, 'first_token': Token(type=1, string='z', start=(7, 4), end=(7, 5), line='    z: int128 = 10\n', index=30, startpos=102, endpos=103), 'last_token': Token(type=2, string='10', start=(7, 16), end=(7, 18), line='    z: int128 = 10\n', index=34, startpos=114, endpos=116), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 21, 'ast_type': 'AnnAssign', 'end_lineno': 7, 'end_col_offset': 18, 'src': '102:14:0', 'node_source_code': 'z: int128 = 10'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 7, 'col_offset': 4, 'first_token': Token(type=1, string='z', start=(7, 4), end=(7, 5), line='    z: int128 = 10\n', index=30, startpos=102, endpos=103), 'last_token': Token(type=1, string='z', start=(7, 4), end=(7, 5), line='    z: int128 = 10\n', index=30, startpos=102, endpos=103), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 22, 'ast_type': 'Name', 'end_lineno': 7, 'end_col_offset': 5, 'src': '102:1:0', 'node_source_code': 'z'}
+ast_struct
+{'id': 'int128', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 7, 'col_offset': 7, 'first_token': Token(type=1, string='int128', start=(7, 7), end=(7, 13), line='    z: int128 = 10\n', index=32, startpos=105, endpos=111), 'last_token': Token(type=1, string='int128', start=(7, 7), end=(7, 13), line='    z: int128 = 10\n', index=32, startpos=105, endpos=111), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 24, 'ast_type': 'Name', 'end_lineno': 7, 'end_col_offset': 13, 'src': '105:6:0', 'node_source_code': 'int128'}
+ast_struct
+{'n': 10, 'lineno': 7, 'col_offset': 16, 'first_token': Token(type=2, string='10', start=(7, 16), end=(7, 18), line='    z: int128 = 10\n', index=34, startpos=114, endpos=116), 'last_token': Token(type=2, string='10', start=(7, 16), end=(7, 18), line='    z: int128 = 10\n', index=34, startpos=114, endpos=116), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 26, 'ast_type': 'Int', 'end_lineno': 7, 'end_col_offset': 18, 'src': '114:2:0', 'node_source_code': '10'}
+ast_struct
+{'test': <_ast.Compare object at 0x7fac41278dd8>, 'body': [<_ast.Assign object at 0x7fac41278908>, <_ast.Assign object at 0x7fac41278f98>], 'orelse': [], 'lineno': 8, 'col_offset': 4, 'first_token': Token(type=1, string='if', start=(8, 4), end=(8, 6), line='    if (z > x + y):\n', index=36, startpos=121, endpos=123), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 27, 'ast_type': 'If', 'end_lineno': 10, 'end_col_offset': 14, 'src': '121:49:0', 'node_source_code': 'if (z > x + y):\n     z = x * y - 2\n     z = z + 1'}
+ast_struct
+{'left': <_ast.Name object at 0x7fac41278e10>, 'ops': [<_ast.Gt object at 0x7fac42e227f0>], 'comparators': [<_ast.BinOp object at 0x7fac41278e48>], 'lineno': 8, 'col_offset': 8, 'first_token': Token(type=1, string='z', start=(8, 8), end=(8, 9), line='    if (z > x + y):\n', index=38, startpos=125, endpos=126), 'last_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 28, 'ast_type': 'Compare', 'end_lineno': 8, 'end_col_offset': 17, 'src': '125:9:0', 'node_source_code': 'z > x + y'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 8, 'col_offset': 8, 'first_token': Token(type=1, string='z', start=(8, 8), end=(8, 9), line='    if (z > x + y):\n', index=38, startpos=125, endpos=126), 'last_token': Token(type=1, string='z', start=(8, 8), end=(8, 9), line='    if (z > x + y):\n', index=38, startpos=125, endpos=126), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 29, 'ast_type': 'Name', 'end_lineno': 8, 'end_col_offset': 9, 'src': '125:1:0', 'node_source_code': 'z'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 31, 'ast_type': 'Gt', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'left': <_ast.Name object at 0x7fac41278e80>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'right': <_ast.Name object at 0x7fac41278940>, 'lineno': 8, 'col_offset': 12, 'first_token': Token(type=1, string='x', start=(8, 12), end=(8, 13), line='    if (z > x + y):\n', index=40, startpos=129, endpos=130), 'last_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 32, 'ast_type': 'BinOp', 'end_lineno': 8, 'end_col_offset': 17, 'src': '129:5:0', 'node_source_code': 'x + y'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 8, 'col_offset': 12, 'first_token': Token(type=1, string='x', start=(8, 12), end=(8, 13), line='    if (z > x + y):\n', index=40, startpos=129, endpos=130), 'last_token': Token(type=1, string='x', start=(8, 12), end=(8, 13), line='    if (z > x + y):\n', index=40, startpos=129, endpos=130), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 33, 'ast_type': 'Name', 'end_lineno': 8, 'end_col_offset': 13, 'src': '129:1:0', 'node_source_code': 'x'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'id': 'y', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 8, 'col_offset': 16, 'first_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'last_token': Token(type=1, string='y', start=(8, 16), end=(8, 17), line='    if (z > x + y):\n', index=42, startpos=133, endpos=134), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 36, 'ast_type': 'Name', 'end_lineno': 8, 'end_col_offset': 17, 'src': '133:1:0', 'node_source_code': 'y'}
+ast_struct
+{'targets': [<_ast.Name object at 0x7fac412787f0>], 'value': <_ast.BinOp object at 0x7fac412786a0>, 'lineno': 9, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(9, 5), end=(9, 6), line='     z = x * y - 2\n', index=47, startpos=142, endpos=143), 'last_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 38, 'ast_type': 'Assign', 'end_lineno': 9, 'end_col_offset': 18, 'src': '142:13:0', 'node_source_code': 'z = x * y - 2'}
+ast_struct
+{'left': <_ast.BinOp object at 0x7fac41278eb8>, 'op': <_ast.Sub object at 0x7fac42e20048>, 'right': <_ast.Num object at 0x7fac41278f60>, 'lineno': 9, 'col_offset': 9, 'first_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'last_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 41, 'ast_type': 'BinOp', 'end_lineno': 9, 'end_col_offset': 18, 'src': '146:9:0', 'node_source_code': 'x * y - 2'}
+ast_struct
+{'left': <_ast.Name object at 0x7fac41278ef0>, 'op': <_ast.Mult object at 0x7fac42e20160>, 'right': <_ast.Name object at 0x7fac41278f28>, 'lineno': 9, 'col_offset': 9, 'first_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'last_token': Token(type=1, string='y', start=(9, 13), end=(9, 14), line='     z = x * y - 2\n', index=51, startpos=150, endpos=151), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 42, 'ast_type': 'BinOp', 'end_lineno': 9, 'end_col_offset': 14, 'src': '146:5:0', 'node_source_code': 'x * y'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 9, 'col_offset': 9, 'first_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'last_token': Token(type=1, string='x', start=(9, 9), end=(9, 10), line='     z = x * y - 2\n', index=49, startpos=146, endpos=147), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 43, 'ast_type': 'Name', 'end_lineno': 9, 'end_col_offset': 10, 'src': '146:1:0', 'node_source_code': 'x'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 45, 'ast_type': 'Mult', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'id': 'y', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 9, 'col_offset': 13, 'first_token': Token(type=1, string='y', start=(9, 13), end=(9, 14), line='     z = x * y - 2\n', index=51, startpos=150, endpos=151), 'last_token': Token(type=1, string='y', start=(9, 13), end=(9, 14), line='     z = x * y - 2\n', index=51, startpos=150, endpos=151), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 46, 'ast_type': 'Name', 'end_lineno': 9, 'end_col_offset': 14, 'src': '150:1:0', 'node_source_code': 'y'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 48, 'ast_type': 'Sub', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 2, 'lineno': 9, 'col_offset': 17, 'first_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'last_token': Token(type=2, string='2', start=(9, 17), end=(9, 18), line='     z = x * y - 2\n', index=53, startpos=154, endpos=155), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 49, 'ast_type': 'Int', 'end_lineno': 9, 'end_col_offset': 18, 'src': '154:1:0', 'node_source_code': '2'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 9, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(9, 5), end=(9, 6), line='     z = x * y - 2\n', index=47, startpos=142, endpos=143), 'last_token': Token(type=1, string='z', start=(9, 5), end=(9, 6), line='     z = x * y - 2\n', index=47, startpos=142, endpos=143), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 39, 'ast_type': 'Name', 'end_lineno': 9, 'end_col_offset': 6, 'src': '142:1:0', 'node_source_code': 'z'}
+ast_struct
+{'targets': [<_ast.Name object at 0x7fac41278fd0>], 'value': <_ast.BinOp object at 0x7fac41280048>, 'lineno': 10, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(10, 5), end=(10, 6), line='     z = z + 1\n', index=55, startpos=161, endpos=162), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 50, 'ast_type': 'Assign', 'end_lineno': 10, 'end_col_offset': 14, 'src': '161:9:0', 'node_source_code': 'z = z + 1'}
+ast_struct
+{'left': <_ast.Name object at 0x7fac41280080>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'right': <_ast.Num object at 0x7fac412800b8>, 'lineno': 10, 'col_offset': 9, 'first_token': Token(type=1, string='z', start=(10, 9), end=(10, 10), line='     z = z + 1\n', index=57, startpos=165, endpos=166), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 53, 'ast_type': 'BinOp', 'end_lineno': 10, 'end_col_offset': 14, 'src': '165:5:0', 'node_source_code': 'z + 1'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 10, 'col_offset': 9, 'first_token': Token(type=1, string='z', start=(10, 9), end=(10, 10), line='     z = z + 1\n', index=57, startpos=165, endpos=166), 'last_token': Token(type=1, string='z', start=(10, 9), end=(10, 10), line='     z = z + 1\n', index=57, startpos=165, endpos=166), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 54, 'ast_type': 'Name', 'end_lineno': 10, 'end_col_offset': 10, 'src': '165:1:0', 'node_source_code': 'z'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 1, 'lineno': 10, 'col_offset': 13, 'first_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'last_token': Token(type=2, string='1', start=(10, 13), end=(10, 14), line='     z = z + 1\n', index=59, startpos=169, endpos=170), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 57, 'ast_type': 'Int', 'end_lineno': 10, 'end_col_offset': 14, 'src': '169:1:0', 'node_source_code': '1'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 10, 'col_offset': 5, 'first_token': Token(type=1, string='z', start=(10, 5), end=(10, 6), line='     z = z + 1\n', index=55, startpos=161, endpos=162), 'last_token': Token(type=1, string='z', start=(10, 5), end=(10, 6), line='     z = z + 1\n', index=55, startpos=161, endpos=162), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 51, 'ast_type': 'Name', 'end_lineno': 10, 'end_col_offset': 6, 'src': '161:1:0', 'node_source_code': 'z'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac41280128>, 'iter': <_ast.Call object at 0x7fac41280160>, 'body': [<_ast.AugAssign object at 0x7fac41280240>], 'orelse': [], 'lineno': 11, 'col_offset': 4, 'first_token': Token(type=1, string='for', start=(11, 4), end=(11, 7), line='    for i in range(5,10):\n', index=62, startpos=175, endpos=178), 'last_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 58, 'ast_type': 'For', 'end_lineno': 12, 'end_col_offset': 10, 'src': '175:32:0', 'node_source_code': 'for i in range(5,10):\n      x+=z'}
+ast_struct
+{'id': 'i', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 11, 'col_offset': 8, 'first_token': Token(type=1, string='i', start=(11, 8), end=(11, 9), line='    for i in range(5,10):\n', index=63, startpos=179, endpos=180), 'last_token': Token(type=1, string='i', start=(11, 8), end=(11, 9), line='    for i in range(5,10):\n', index=63, startpos=179, endpos=180), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 59, 'ast_type': 'Name', 'end_lineno': 11, 'end_col_offset': 9, 'src': '179:1:0', 'node_source_code': 'i'}
+ast_struct
+{'func': <_ast.Name object at 0x7fac41280198>, 'args': [<_ast.Num object at 0x7fac412801d0>, <_ast.Num object at 0x7fac41280208>], 'keywords': [], 'lineno': 11, 'col_offset': 13, 'first_token': Token(type=1, string='range', start=(11, 13), end=(11, 18), line='    for i in range(5,10):\n', index=65, startpos=184, endpos=189), 'last_token': Token(type=53, string=')', start=(11, 23), end=(11, 24), line='    for i in range(5,10):\n', index=70, startpos=194, endpos=195), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 61, 'ast_type': 'Call', 'end_lineno': 11, 'end_col_offset': 24, 'src': '184:11:0', 'node_source_code': 'range(5,10)'}
+ast_struct
+{'id': 'range', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 11, 'col_offset': 13, 'first_token': Token(type=1, string='range', start=(11, 13), end=(11, 18), line='    for i in range(5,10):\n', index=65, startpos=184, endpos=189), 'last_token': Token(type=1, string='range', start=(11, 13), end=(11, 18), line='    for i in range(5,10):\n', index=65, startpos=184, endpos=189), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 62, 'ast_type': 'Name', 'end_lineno': 11, 'end_col_offset': 18, 'src': '184:5:0', 'node_source_code': 'range'}
+ast_struct
+{'n': 5, 'lineno': 11, 'col_offset': 19, 'first_token': Token(type=2, string='5', start=(11, 19), end=(11, 20), line='    for i in range(5,10):\n', index=67, startpos=190, endpos=191), 'last_token': Token(type=2, string='5', start=(11, 19), end=(11, 20), line='    for i in range(5,10):\n', index=67, startpos=190, endpos=191), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 64, 'ast_type': 'Int', 'end_lineno': 11, 'end_col_offset': 20, 'src': '190:1:0', 'node_source_code': '5'}
+ast_struct
+{'n': 10, 'lineno': 11, 'col_offset': 21, 'first_token': Token(type=2, string='10', start=(11, 21), end=(11, 23), line='    for i in range(5,10):\n', index=69, startpos=192, endpos=194), 'last_token': Token(type=2, string='10', start=(11, 21), end=(11, 23), line='    for i in range(5,10):\n', index=69, startpos=192, endpos=194), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 65, 'ast_type': 'Int', 'end_lineno': 11, 'end_col_offset': 23, 'src': '192:2:0', 'node_source_code': '10'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac41280278>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'value': <_ast.Name object at 0x7fac412802b0>, 'lineno': 12, 'col_offset': 6, 'first_token': Token(type=1, string='x', start=(12, 6), end=(12, 7), line='      x+=z\n', index=74, startpos=203, endpos=204), 'last_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 66, 'ast_type': 'AugAssign', 'end_lineno': 12, 'end_col_offset': 10, 'src': '203:4:0', 'node_source_code': 'x+=z'}
+ast_struct
+{'id': 'x', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 12, 'col_offset': 6, 'first_token': Token(type=1, string='x', start=(12, 6), end=(12, 7), line='      x+=z\n', index=74, startpos=203, endpos=204), 'last_token': Token(type=1, string='x', start=(12, 6), end=(12, 7), line='      x+=z\n', index=74, startpos=203, endpos=204), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 67, 'ast_type': 'Name', 'end_lineno': 12, 'end_col_offset': 7, 'src': '203:1:0', 'node_source_code': 'x'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 12, 'col_offset': 9, 'first_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'last_token': Token(type=1, string='z', start=(12, 9), end=(12, 10), line='      x+=z\n', index=76, startpos=206, endpos=207), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 70, 'ast_type': 'Name', 'end_lineno': 12, 'end_col_offset': 10, 'src': '206:1:0', 'node_source_code': 'z'}
+ast_struct
+{'test': <_ast.Name object at 0x7fac41280320>, 'body': [<_ast.AugAssign object at 0x7fac41280358>], 'orelse': [], 'lineno': 13, 'col_offset': 4, 'first_token': Token(type=1, string='while', start=(13, 4), end=(13, 9), line='    while(tes):\n', index=79, startpos=212, endpos=217), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 72, 'ast_type': 'While', 'end_lineno': 14, 'end_col_offset': 10, 'src': '212:22:0', 'node_source_code': 'while(tes):\n      z+=1'}
+ast_struct
+{'id': 'tes', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 13, 'col_offset': 10, 'first_token': Token(type=1, string='tes', start=(13, 10), end=(13, 13), line='    while(tes):\n', index=81, startpos=218, endpos=221), 'last_token': Token(type=1, string='tes', start=(13, 10), end=(13, 13), line='    while(tes):\n', index=81, startpos=218, endpos=221), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 73, 'ast_type': 'Name', 'end_lineno': 13, 'end_col_offset': 13, 'src': '218:3:0', 'node_source_code': 'tes'}
+ast_struct
+{'target': <_ast.Name object at 0x7fac41280390>, 'op': <_ast.Add object at 0x7fac42e1bef0>, 'value': <_ast.Num object at 0x7fac412803c8>, 'lineno': 14, 'col_offset': 6, 'first_token': Token(type=1, string='z', start=(14, 6), end=(14, 7), line='      z+=1\n', index=86, startpos=230, endpos=231), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 75, 'ast_type': 'AugAssign', 'end_lineno': 14, 'end_col_offset': 10, 'src': '230:4:0', 'node_source_code': 'z+=1'}
+ast_struct
+{'id': 'z', 'ctx': <_ast.Store object at 0x7fac42e1b128>, 'lineno': 14, 'col_offset': 6, 'first_token': Token(type=1, string='z', start=(14, 6), end=(14, 7), line='      z+=1\n', index=86, startpos=230, endpos=231), 'last_token': Token(type=1, string='z', start=(14, 6), end=(14, 7), line='      z+=1\n', index=86, startpos=230, endpos=231), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 76, 'ast_type': 'Name', 'end_lineno': 14, 'end_col_offset': 7, 'src': '230:1:0', 'node_source_code': 'z'}
+ast_struct
+{'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 78, 'ast_type': 'Add', 'lineno': None, 'col_offset': None, 'end_lineno': None, 'end_col_offset': None}
+ast_struct
+{'n': 1, 'lineno': 14, 'col_offset': 9, 'first_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'last_token': Token(type=2, string='1', start=(14, 9), end=(14, 10), line='      z+=1\n', index=88, startpos=233, endpos=234), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 79, 'ast_type': 'Int', 'end_lineno': 14, 'end_col_offset': 10, 'src': '233:1:0', 'node_source_code': '1'}
+ast_struct
+{'id': 'public', 'ctx': <_ast.Load object at 0x7fac42e18fd0>, 'lineno': 3, 'col_offset': 1, 'first_token': Token(type=1, string='public', start=(3, 1), end=(3, 7), line='@public\n', index=4, startpos=24, endpos=30), 'last_token': Token(type=1, string='public', start=(3, 1), end=(3, 7), line='@public\n', index=4, startpos=24, endpos=30), 'full_source_code': '#numb: public(int128)\n\n@public\ndef calculate(y: int128):\n    tes: bool = True\n    x: int128 = 5+2\n    z: int128 = 10\n    if (z > x + y):\n     z = x * y - 2\n     z = z + 1\n    for i in range(5,10):\n      x+=z\n    while(tes):\n      z+=1\n#    te = 1\n#    tes = x\n#@public\n#def difficult():\n#    y: int128 = 100\n\n', 'node_id': 80, 'ast_type': 'Name', 'end_lineno': 3, 'end_col_offset': 7, 'src': '24:6:0', 'node_source_code': 'public'}
 {
 	"contract_name": "prova.vy",
 	"ast": {
-		"name": null,
-		 "body": [
-			{"name": "calculate",
-			 "body": [
-				{"target": 
-					{"ast_type": "Name",
-					 "end_col_offset": 5,
-					 "src": "29:1:0",
-					 "node_id": 4,
-					 "lineno": 3,
-					 "col_offset": 4,
-					 "id": "x",
-					 "end_lineno": 3
+		"body": [{
+			"body": [{
+				"target": {
+					"node_id": 7,
+					"end_col_offset": 7,
+					"ast_type": "Name",
+					"src": "61:3:0",
+					"id": "tes",
+					"lineno": 5,
+					"col_offset": 4,
+					"end_lineno": 5
 				},
-				 "annotation": {
-					 "ast_type": "Name",
-					 "end_col_offset": 13, 
-					 "src": "32:6:0", 
-					 "node_id": 6,
-					 "lineno": 3,
-					 "col_offset": 7,
-					 "id": "int128",
-					 "end_lineno": 3
+				"node_id": 6, 
+				"end_col_offset": 20,
+				"ast_type": "AnnAssign",
+				"simple": 1,
+				"src": "61:16:0",
+				"annotation": {
+					"node_id": 9,
+					"end_col_offset": 13,
+					"ast_type": "Name",
+					"src": "66:4:0",
+					"id": "bool",
+					"lineno": 5,
+					"col_offset": 9,
+					"end_lineno": 5
 				},
-				 "ast_type": "AnnAssign",
-				 "end_col_offset": 19,
-				 "src": "29:15:0",
-				 "simple": 1,
-				 "node_id": 3,
-				 "lineno": 3,
-				 "col_offset": 4,
-				 "end_lineno": 3,
-				 "value": {
+				"lineno": 5,
+				"col_offset": 4,
+				"end_lineno": 5,
+			"	value": {
+					"node_id": 11,
+					"end_col_offset": 20,
+					"ast_type": "NameConstant",
+					"src": "73:4:0",
+					"lineno": 5,
+					"col_offset": 16,
+					"end_lineno": 5,
+					"value": true
+					}
+				}, {
+					"target": {
+						"node_id": 13,
+						"end_col_offset": 5,
+						"ast_type": "Name",
+						"src": "82:1:0",
+						"id": "x",
+						"lineno": 6,
+						"col_offset": 4,
+						"end_lineno": 6
+					},
+					"node_id": 12,
+					"end_col_offset": 19,
+					"ast_type": "AnnAssign",
+					"simple": 1,
+					"src": "82:15:0",
+					"annotation": {
+						"node_id": 15,
+						"end_col_offset": 13,
+						"ast_type": "Name",
+						"src": "85:6:0",
+						"id": "int128",
+						"lineno": 6,
+						"col_offset": 7,
+						"end_lineno": 
+					},
+					"lineno": 6,
+					"col_offset": 4,
+					"end_lineno": 6,
+					"value": {
+						"left": {
+							"node_id": 18,
+							"end_col_offset": 17,
+							"ast_type": "Int",
+							"src": "94:1:0",
+							"lineno": 6,
+							"col_offset": 16,
+							"end_lineno": 6,
+							"value": 5
+						},
+						"right": {
+							"node_id": 20,
+							"end_col_offset": 19,
+							"ast_type": "Int",
+							"src": "96:1:0",
+							"lineno": 6,
+							"col_offset": 18,
+							"end_lineno": 6,
+							"value": 2
+						},
+						"node_id": 17,
+						"end_col_offset": 19,
+						"ast_type": "BinOp",
+						"src": "94:3:0",
+						"op": {
+							"node_id": 78,
+							"end_col_offset": 19,
+							"ast_type": "Add",
+							"src": "94:3:0",
+							"lineno": 6,
+							"col_offset": 16,
+							"end_lineno": 6
+						},
+						"lineno": 6,
+						"col_offset": 16,
+						"end_lineno": 6
+					}
+				}, {
+					"target": {
+						"node_id": 22,
+						"end_col_offset": 5,
+						"ast_type": "Name",
+						"src": "102:1:0",
+						"id": "z",
+						"lineno": 7,
+						"col_offset": 4,
+						"end_lineno": 7
+					},
+					"node_id": 21,
+					"end_col_offset": 18,
+					"ast_type": "AnnAssign",
+					"simple": 1, "src": "102:14:0",
+					"annotation": {
+						"node_id": 24,
+						"end_col_offset": 13,
+						"ast_type": "Name",
+						"src": "105:6:0",
+						"id": "int128",
+						"lineno": 7,
+						"col_offset": 7,
+						"end_lineno": 7
+					},
+					"lineno": 7,
+					"col_offset": 4,
+					"end_lineno": 7,
+					"value": {
+						"node_id": 26,
+						"end_col_offset": 18,
+						"ast_type": "Int",
+						"src": "114:2:0",
+						"lineno": 7,
+						"col_offset": 16,
+						"end_lineno": 7,
+						"value": 10
+					}
+				}, {
+					"body": [{
+						"target": {
+							"node_id": 39,
+							"end_col_offset": 6,
+							"ast_type": "Name",
+							"src": "142:1:0",
+							"id": "z",
+							"lineno": 9,
+							"col_offset": 5,
+							"end_lineno": 9
+						},
+						"node_id": 38,
+						"end_col_offset": 18,
+						"ast_type": "Assign",
+						"src": "142:13:0",
+						"lineno": 9,
+						"col_offset": 5,
+						"end_lineno": 9,
+						"value": {
+							"left": {
+								"left": {
+									"node_id": 43,
+									"end_col_offset": 10,
+									"ast_type": "Name",
+									"src": "146:1:0",
+									"id": "x",
+									"lineno": 9,
+									"col_offset": 9,
+									"end_lineno": 9
+								},
+								"right": {
+									"node_id": 46,
+									"end_col_offset": 14,
+									"ast_type": "Name",
+									"src": "150:1:0",
+									"id": "y",
+									"lineno": 9,
+									"col_offset": 13, 
+									"end_lineno": 9
+								},
+								"node_id": 42,
+								"end_col_offset": 14,
+								"ast_type": "BinOp",
+								"src": "146:5:0",
+								"op": {
+									"node_id": 45,
+									"end_col_offset": 14,
+									"ast_type": "Mult",
+									"src": "146:5:0",
+									"lineno": 9,
+									"col_offset": 9,
+									"end_lineno": 9
+								},
+								"lineno": 9,
+								"col_offset": 9,
+								"end_lineno": 9
+							},
+							"right": {
+								"node_id": 49,
+								"end_col_offset": 18,
+								"ast_type": "Int",
+								"src": "154:1:0",
+								"lineno": 9,
+								"col_offset": 17,
+								"end_lineno": 9,
+								"value": 2
+							},
+							"node_id": 41,
+							"end_col_offset": 18,
+							"ast_type": "BinOp",
+							"src": "146:9:0",
+							"op": {
+								"node_id": 48,
+								"end_col_offset": 18,
+								"ast_type": "Sub",
+								"src": "146:9:0",
+								"lineno": 9,
+								"col_offset": 9,
+								"end_lineno": 9
+							},
+							"lineno": 9,
+							"col_offset": 9,
+							"end_lineno": 9
+						}
+					}, {
+						"target": {
+							"node_id": 51,
+							"end_col_offset": 6,
+							"ast_type": "Name",
+							"src": "161:1:0",
+							"id": "z",
+							"lineno": 10,
+							"col_offset": 5,
+							"end_lineno": 10
+						},
+						"node_id": 50,
+						"end_col_offset": 14,
+						"ast_type": "Assign",
+						"src": "161:9:0",
+						"lineno": 10,
+						"col_offset": 5,
+						"end_lineno": 10,
+						"value": {
+							"left": {
+								"node_id": 54,
+								"end_col_offset": 10,
+								"ast_type": "Name",
+								"src": "165:1:0",
+								"id": "z",
+								"lineno": 10,
+								"col_offset": 9,
+								"end_lineno": 10
+							},
+							"right": {
+								"node_id": 57,
+								"end_col_offset": 14,
+								"ast_type": "Int",
+								"src": "169:1:0",
+								"lineno": 10,
+								"col_offset": 13,
+								"end_lineno": 10,
+								"value": 1
+							},
+							"node_id": 53,
+							"end_col_offset": 14,
+							"ast_type": "BinOp",
+							"src": "165:5:0",
+							"op": {
+								"node_id": 78,
+								"end_col_offset": 14,
+								"ast_type": "Add",
+								"src": "165:5:0",
+								"lineno": 10,
+								"col_offset": 9,
+								"end_lineno": 10
+							},
+							"lineno": 10,
+							"col_offset": 9,
+							"end_lineno": 10
+						}
+					}
+				], 
+				"node_id": 27,
+				"orelse": [],
+				"end_col_offset": 14,
+				"ast_type": "If",
+				"src": "121:49:0",
+				"lineno": 8,
+				"col_offset": 4,
+				"test": {
 					"left": {
-						 "ast_type": "Int",
-						 "end_col_offset": 17,
-						 "src": "41:1:0",
-						 "node_id": 9,
-						 "lineno": 3,
-						 "col_offset": 16,
-						 "end_lineno": 3,
-						 "value": 5
+						"node_id": 29,
+						"end_col_offset": 9,
+						"ast_type": "Name",
+						"src": "125:1:0",
+						"id": "z",
+						"lineno": 8,
+						"col_offset": 8,
+						"end_lineno": 8
 					},
-					 "op": {
-						 "ast_type": "Add",
-						 "end_col_offset": 19,
-						 "src": "41:3:0",
-						 "node_id": 10,
-						 "lineno": 3,
-						 "col_offset": 16,
-						 "end_lineno": 3
+					"right": {
+						"left": {
+							"node_id": 33,
+							"end_col_offset": 13,
+							"ast_type": "Name",
+							"src": "129:1:0",
+							"id": "x",
+							"lineno": 8,
+							"col_offset": 12,
+							"end_lineno": 8
+						},
+						"right": {
+							"node_id": 36,
+							"end_col_offset": 17,
+							"ast_type": "Name",
+							"src": "133:1:0",
+							"id": "y",
+							"lineno": 8,
+							"col_offset": 16,
+							"end_lineno": 8
+						},
+						"node_id": 32,
+						"end_col_offset": 17,
+						"ast_type": "BinOp",
+						"src": "129:5:0",
+						"op": {
+							"node_id": 78,
+							"end_col_offset": 17,
+							"ast_type": "Add",
+							"src": "129:5:0",
+							"lineno": 8,
+							"col_offset": 12,
+							"end_lineno": 8
+						},
+						"lineno": 8,
+						"col_offset": 12,
+						"end_lineno": 8
 					},
-					 "ast_type": "BinOp", 
-					 "end_col_offset": 19,
-					 "right": {
-						 "ast_type": "Int",
-						 "end_col_offset": 19,
-						 "src": "43:1:0",
-						 "node_id": 11,
-						 "lineno": 3,
-						 "col_offset": 18,
-						 "end_lineno": 3,
-						 "value": 2
+					"node_id": 28,
+					"end_col_offset": 17,
+					"ast_type": "Compare",
+					"src": "125:9:0",
+					"op": {
+						"node_id": 31,
+						"end_col_offset": 17,
+						"ast_type": "Gt",
+						"src": "125:9:0",
+						"lineno": 8,
+						"col_offset": 8,
+						"end_lineno": 8
 					},
-					 "src": "41:3:0",
-					 "node_id": 8,
-					 "lineno": 3,
-					 "col_offset": 16,
-					 "end_lineno": 3
+					"lineno": 8,
+					"col_offset": 8,
+					"end_lineno": 8
+				},
+				"end_lineno": 10
+			}, {
+				"target": {
+					"node_id": 59,
+					"end_col_offset": 9,
+					"ast_type": "Name",
+					"src": "179:1:0",
+					"id": "i",
+					"lineno": 11,
+					"col_offset": 8,
+					"end_lineno": 11
+				},
+				"node_id": 58,
+				"body": [{
+					"target": {
+						"node_id": 67,
+						"end_col_offset": 7,
+						"ast_type": "Name",
+						"src": "203:1:0",
+						"id": "x",
+						"lineno": 12,
+						"col_offset": 6,
+						"end_lineno": 12
+					},
+					"node_id": 66,
+					"end_col_offset": 10,
+					"ast_type": "AugAssign",
+					"src": "203:4:0",
+					"op": {
+						"node_id": 78,
+						"end_col_offset": 10,
+						"ast_type": "Add",
+						"src": "203:4:0",
+						"lineno": 12,
+						"col_offset": 6,
+						"end_lineno": 12
+					},
+					"lineno": 12,
+					"col_offset": 6,
+					"end_lineno": 12,
+					"value": {
+						"node_id": 70,
+						"end_col_offset": 10,
+						"ast_type": "Name",
+						"src": "206:1:0",
+						"id": "z",
+						"lineno": 12,
+						"col_offset": 9,
+						"end_lineno": 12
 					}
 				}
-			],
-			 "decorator_list": [
-				{
-				 "ast_type": "Name",
-				 "end_col_offset": 7,
-				 "src": "1:6:0",
-				 "node_id": 12,
-				 "lineno": 1,
-				 "col_offset": 1,
-				 "id": "public",
-				 "end_lineno": 1
-				}
-			],
-			 "pos": null,
-			 "ast_type": "FunctionDef",
-			 "end_col_offset": 19,
-			 "doc_string": null,
-			 "returns": null,
-			 "src": "0:44:0",
-			 "node_id": 1,
-			 "args": {
-				"ast_type": "arguments",
-				 "end_col_offset": 1,
-				 "default": null,
-				 "src": "0:1:0",
-				 "defaults": [],
-				 "args": [],
-				 "node_id": 2,
-				 "lineno": 1,
-				 "col_offset": 0,
-				 "end_lineno": 1
-			},
-			 "lineno": 1,
-			 "col_offset": 0,
-			 "end_lineno": 3
-			}
-		],
-		 "ast_type": "Module",
-		 "end_col_offset": 19,
-		 "doc_string": null,
-		 "src": "0:44:0",
-		 "node_id": 0,
-		 "lineno": 1,
-		 "col_offset": 0,
-		 "end_lineno": 3
-	}
-}
+			], "end_col_offset": 10, "ast_type": "For", "src": "175:32:0", "iter": {"node_id": 61, "end_col_offset": 24, "ast_type": "Call", "src": "184:11:0", "args": [{"node_id": 64, "end_col_offset": 20, "ast_type": "Int", "src": "190:1:0", "lineno": 11, "col_offset": 19, "end_lineno": 11, "value": 5}, {"node_id": 65, "end_col_offset": 23, "ast_type": "Int", "src": "192:2:0", "lineno": 11, "col_offset": 21, "end_lineno": 11, "value": 10}], "func": {"node_id": 62, "end_col_offset": 18, "ast_type": "Name", "src": "184:5:0", "id": "range", "lineno": 11, "col_offset": 13, "end_lineno": 11}, "keyword": null, "keywords": [], "lineno": 11, "col_offset": 13, "end_lineno": 11}, "lineno": 11, "col_offset": 4, "end_lineno": 12}, {"body": [{"target": {"node_id": 76, "end_col_offset": 7, "ast_type": "Name", "src": "230:1:0", "id": "z", "lineno": 14, "col_offset": 6, "end_lineno": 14}, "node_id": 75, "end_col_offset": 10, "ast_type": "AugAssign", "src": "230:4:0", "op": {"node_id": 78, "end_col_offset": 10, "ast_type": "Add", "src": "230:4:0", "lineno": 14, "col_offset": 6, "end_lineno": 14}, "lineno": 14, "col_offset": 6, "end_lineno": 14, "value": {"node_id": 79, "end_col_offset": 10, "ast_type": "Int", "src": "233:1:0", "lineno": 14, "col_offset": 9, "end_lineno": 14, "value": 1}}], "node_id": 72, "end_col_offset": 10, "ast_type": "While", "src": "212:22:0", "lineno": 13, "col_offset": 4, "test": {"node_id": 73, "end_col_offset": 13, "ast_type": "Name", "src": "218:3:0", "id": "tes", "lineno": 13, "col_offset": 10, "end_lineno": 13}, "end_lineno": 14}], "node_id": 1, "end_col_offset": 10, "returns": null, "pos": null, "ast_type": "FunctionDef", "decorator_list": [{"node_id": 80, "end_col_offset": 7, "ast_type": "Name", "src": "24:6:0", "id": "public", "lineno": 3, "col_offset": 1, "end_lineno": 3}], "src": "23:211:0", "args": {"default": null, "node_id": 2, "end_col_offset": 23, "ast_type": "arguments", "src": "45:9:0", "args": [{"node_id": 3, "end_col_offset": 23, "ast_type": "arg", "arg": "y", "src": "45:9:0", "annotation": {"node_id": 4, "end_col_offset": 23, "ast_type": "Name", "src": "48:6:0", "id": "int128", "lineno": 4, "col_offset": 17, "end_lineno": 4}, "lineno": 4, "col_offset": 14, "end_lineno": 4}], "defaults": [], "lineno": 4, "col_offset": 14, "end_lineno": 4}, "name": "calculate", "lineno": 3, "col_offset": 0, "end_lineno": 14, "doc_string": null}], "node_id": 0, "end_col_offset": 10, "ast_type": "Module", "src": "0:234:0", "name": null, "lineno": 1, "col_offset": 0, "end_lineno": 14, "doc_string": null}}
