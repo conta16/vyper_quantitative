@@ -4,6 +4,7 @@ import asttokens
 
 from vyper import compile_lll, opcodes
 from vyper.ast import ast_to_dict, parse_natspec
+from vyper.mwp.mwp import Mwp
 from vyper.compiler.phases import CompilerData
 from vyper.compiler.utils import build_gas_estimates
 from vyper.parser.lll_node import LLLnode
@@ -21,6 +22,13 @@ def build_ast_dict(compiler_data: CompilerData) -> dict:
     }
     return ast_dict
 
+def mwp(compiler_data: CompilerData) -> dict:
+	ast_dict = {
+		"contract_name": compiler_data.contract_name,
+		"ast": ast_to_dict(compiler_data.vyper_module),
+	}
+	print(Mwp().matrix_reduction(ast_dict['ast']['body'][0]['body']))
+	return ast_dict
 
 def build_devdoc(compiler_data: CompilerData) -> dict:
     userdoc, devdoc = parse_natspec(

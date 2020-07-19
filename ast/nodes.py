@@ -77,8 +77,6 @@ def get_node(
                 f"Invalid syntax (unsupported '{ast_struct['ast_type']}' Python AST node)",
                 ast_struct,
             )
-    print("ast_struct")
-    print(ast_struct)
     return vy_class(parent=parent, **ast_struct)
 
 

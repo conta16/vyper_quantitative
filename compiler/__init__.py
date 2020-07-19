@@ -13,6 +13,8 @@ from vyper.typing import (
 )
 
 OUTPUT_FORMATS = {
+    # uses ast_dict output to give mwp bounds
+    "mwp": output.mwp,
     # requires vyper_module
     "ast_dict": output.build_ast_dict,
     # requires global_ctx
