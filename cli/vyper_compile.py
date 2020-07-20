@@ -94,7 +94,6 @@ def _parse_args(argv):
         help='Set the root path for contract imports',
         default='.', dest='root_folder'
     )
-
     args = parser.parse_args(argv)
     if args.traceback_limit is not None:
         sys.tracebacklimit = args.traceback_limit
@@ -105,9 +104,7 @@ def _parse_args(argv):
         # setting of zero so error printouts only include information about where
         # an error occurred in a Vyper source file.
         sys.tracebacklimit = 0
-
     output_formats = tuple(uniq(args.format.split(',')))
-
     compiled = compile_files(
         args.input_files,
         output_formats,
@@ -115,10 +112,8 @@ def _parse_args(argv):
         args.show_gas_estimates,
         args.evm_version,
     )
-
     if output_formats == ('combined_json',):
         return
-
     for contract_data in compiled.values():
         for data in contract_data.values():
             if isinstance(data, (list, dict)):

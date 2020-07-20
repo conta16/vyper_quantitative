@@ -18,7 +18,6 @@ CLAMP_OP_NAMES = {
 
 
 def num_to_bytearray(x):
-    print(x)
     o = []
     while x > 0:
         o.insert(0, x % 256)
@@ -106,7 +105,6 @@ def compile_to_assembly(code, withargs=None, existing_labels=None, break_dest=No
         elif code.value >= 2**256:
             raise Exception(f"Value too high: {code.value}")
         bytez = num_to_bytearray(code.value % 2**256) or [0]
-        print(bytez)
         return ['PUSH' + str(len(bytez))] + bytez
     # Variables connected to with statements
     elif isinstance(code.value, str) and code.value in withargs:

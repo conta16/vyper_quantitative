@@ -84,7 +84,6 @@ def compile_codes(
         output_formats = ("bytecode",)
     if isinstance(output_formats, Sequence):
         output_formats = dict((k, output_formats) for k in contract_sources.keys())
-
     out: OrderedDict = OrderedDict()
     for source_id, contract_name in enumerate(
         sorted(contract_sources), start=initial_id
@@ -99,7 +98,6 @@ def compile_codes(
             and isinstance(interfaces[contract_name], dict)
         ):
             interfaces = interfaces[contract_name]
-
         compiler_data = CompilerData(source_code, contract_name, interfaces, source_id)
         for output_format in output_formats[contract_name]:
             if output_format not in OUTPUT_FORMATS:

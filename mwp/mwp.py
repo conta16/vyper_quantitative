@@ -1,5 +1,6 @@
 from vyper.mwp.matrix_utils import Matrix_utils
 import numpy as np
+from vyper.mwp.const import Const
 #from vyper.exception import VariableDeclarationException
 #from inspect import currentframe, getframeinfo
 
@@ -10,6 +11,8 @@ class Mwp:
 		self.num_constants = 0
 		self.matrix = []
 		self.utils = Matrix_utils()
+		self.const = Const()
+		#print(globals.init())
                 #self.frameinfo = getframeinfo(currentframe()) #if variable depends on op other than =, +, *, then use frameinfo to update self.context[variable_name] value to line number
 
 	def new_variable(self, name, value):
@@ -34,9 +37,9 @@ class Mwp:
 		l = list(self.context)
 		for i in range(len(self.context)):
 			if i == l.index(name):
-				array = np.append(array,1)
+				array = np.append(array, self.const.DEF_M)
 			else:
-				array = np.append(array,0)
+				array = np.append(array, self.const.DEF_NOFLOW)
 		return array
 
 	def binop_reduction(self, right, left):
@@ -71,8 +74,12 @@ class Mwp:
 			skip = self.utils.skip(1)
 			for i in operation:
 				m = self.matrix_reduction(i)
-				m, skip = self.utils.eq_matrix(m, skip)
-				skip = self.utils.mult(skip, m)
+				if isinstance(m, int) and m == -1:
+					skip = m
+					break
+				else:
+					m, skip = self.utils.eq_matrix(m, skip)
+					skip = self.utils.mult(skip, m)
 			return skip
 
 		elif operation['ast_type'] == "Assign" or operation['ast_type'] == "AnnAssign" or operation['ast_type'] == "AugAssign": #and operation.target.id not in self.context.keys()
@@ -109,4 +116,8 @@ class Mwp:
 				return -1
 
 		elif operation['ast_type'] == "While":
-			print("oh no a while")
+			body = self.utils.get_closure(self.matrix_reduction(operation['body']))
+			if self.utils.is_lmatrix_valid(body) and self.const.DEF_P not in body:
+				return body
+			else:
+				return -1

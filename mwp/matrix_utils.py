@@ -1,6 +1,10 @@
 import numpy as np
+from vyper.mwp.const import Const
 
 class Matrix_utils:
+
+	def __init__(self):
+		self.const = Const()
 
 	def sum(self,m1,m2):
 		if len(m1) == len(m2) and len(m1[0]) == len(m2[0]):
@@ -53,11 +57,11 @@ class Matrix_utils:
 			left = np.hstack((left, np.array(np.zeros((len(left), len(right[0])-len(left[0])),dtype=int))))
 
 		while(or_lenr_right < len(right)):
-			right[or_lenr_right][or_lenr_right] = 1
+			right[or_lenr_right][or_lenr_right] = self.const.DEF_M
 			or_lenr_right+=1
 
 		while(or_lenr_left < len(left)):
-			left[or_lenr_left][or_lenr_left] = 1
+			left[or_lenr_left][or_lenr_left] = self.const.DEF_M
 			or_lenr_left+=1
 
 		return np.copy(right),np.copy(left)
@@ -88,8 +92,8 @@ class Matrix_utils:
 		p = set()
 		for i in range(len(matrix)):
 			for j in range(len(matrix[0])):
-				if matrix[i][j] == 3:
+				if matrix[i][j] == self.const.DEF_P:
 					p.add(j)
 		for i in p:
-			matrix[pos][i] = 3
+			matrix[pos][i] = self.const.DEF_P
 		return np.copy(matrix)
