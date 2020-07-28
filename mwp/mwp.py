@@ -80,6 +80,7 @@ class Mwp:
 				else:
 					m, skip = self.utils.eq_matrix(m, skip)
 					skip = self.utils.mult(skip, m)
+			print(self.context)
 			return skip
 
 		elif operation['ast_type'] == "Assign" or operation['ast_type'] == "AnnAssign" or operation['ast_type'] == "AugAssign": #and operation.target.id not in self.context.keys()

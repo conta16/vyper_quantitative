@@ -28,6 +28,7 @@ devdoc             - Natspec developer documentation
 combined_json      - All of the above format options combined as single JSON output
 ast                - AST in JSON format
 mwp                - Show mwp bounds
+rank               - Show while loop bounds
 interface          - Vyper interface of a contract
 external_interface - External interface of a contract, used for outside contract calls
 opcodes            - List of opcodes as a string

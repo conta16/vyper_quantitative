@@ -15,6 +15,8 @@ from vyper.typing import (
 OUTPUT_FORMATS = {
     # uses ast_dict output to give mwp bounds
     "mwp": output.mwp,
+    # uses ast_dict output to give while loop bounds
+    "rank": output.rank,
     # requires vyper_module
     "ast_dict": output.build_ast_dict,
     # requires global_ctx
