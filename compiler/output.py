@@ -5,7 +5,8 @@ import asttokens
 from vyper import compile_lll, opcodes
 from vyper.ast import ast_to_dict, parse_natspec
 from vyper.mwp.mwp import Mwp
-from vyper.ranking.proof_structure import ProofStructure
+#from vyper.ranking.proof_structure import ProofStructure
+from vyper.itrs.__init__ import ITRS
 from vyper.compiler.phases import CompilerData
 from vyper.compiler.utils import build_gas_estimates
 from vyper.parser.lll_node import LLLnode
@@ -34,8 +35,17 @@ def mwp(compiler_data: CompilerData) -> str:
 
 def rank(compiler_data: CompilerData) -> str:
 	ast_dict = build_ast_dict(compiler_data)
-	ps = ProofStructure(ast_dict)
+	#ps = ProofStructure(ast_dict)
+	print("In rank")
 	return
+
+def itrs(compiler_data: CompilerData) -> str:
+	ast_dict = build_ast_dict(compiler_data)
+	itrs = []
+	for i in range(len(ast_dict['ast']['body'])):
+		itrs.append(ITRS(ast_dict['ast']['body'][i]).calculate())
+		print(itrs[i])
+	return itrs
 
 def build_devdoc(compiler_data: CompilerData) -> dict:
     userdoc, devdoc = parse_natspec(

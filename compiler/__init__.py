@@ -17,6 +17,8 @@ OUTPUT_FORMATS = {
     "mwp": output.mwp,
     # uses ast_dict output to give while loop bounds
     "rank": output.rank,
+    # uses ast_dict output to translate into Integer Term Rewrite System
+    "itrs": output.itrs,
     # requires vyper_module
     "ast_dict": output.build_ast_dict,
     # requires global_ctx
