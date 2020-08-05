@@ -6,7 +6,8 @@ from vyper import compile_lll, opcodes
 from vyper.ast import ast_to_dict, parse_natspec
 from vyper.mwp.mwp import Mwp
 #from vyper.ranking.proof_structure import ProofStructure
-from vyper.itrs.__init__ import ITRS
+#from vyper.itrs.__init__ import ITRS
+from vyper.itrs.itrs_global import ITRS_global
 from vyper.compiler.phases import CompilerData
 from vyper.compiler.utils import build_gas_estimates
 from vyper.parser.lll_node import LLLnode
@@ -41,11 +42,10 @@ def rank(compiler_data: CompilerData) -> str:
 
 def itrs(compiler_data: CompilerData) -> str:
 	ast_dict = build_ast_dict(compiler_data)
-	itrs = []
-	for i in range(len(ast_dict['ast']['body'])):
-		itrs.append(ITRS(ast_dict['ast']['body'][i]).calculate())
-		print(itrs[i])
-	return itrs
+	#itrs = []
+	global_st = ITRS_global(ast_dict['ast']['body'])
+	#return itrs
+	return
 
 def build_devdoc(compiler_data: CompilerData) -> dict:
     userdoc, devdoc = parse_natspec(

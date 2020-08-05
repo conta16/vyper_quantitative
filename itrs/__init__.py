@@ -3,32 +3,64 @@
 #import pyeda.boolalg.expr as pyeda
 from sympy import symbols
 from sympy.logic.boolalg import to_dnf
+from vyper.itrs.const import BUILT_IN, ENV_VAR, CONSTS
 
 class ITRS:
 
-	def __init__(self, procedure):
-		print("in init")
+	def __init__(self, procedure, state_variables, state_structs):
+		#take whiles ast in function, pass them to calculate, return itrs to while in dictionary. In itrs_global, in the end, we will have all the functions with their iteration upper bound
+		#TODO: fix increasing variable problem(x=x+z+2; x=x+5 gives only x+5). aka replace var x with its current value, so x+z+2
 		self.procedure = procedure['body']
+		self.whiles = {}
+		self.get_whiles(self.procedure)
 		self.state_counter = 1
+		self.func_needed = []
 		self.listvariable_counter = 1
-
+		self.structs = state_structs
 		"""
 		for 29/07/2020, self.variables is a mapping between var_names to 0 or 1, and self.variable_names is not used.
 		it needs to be checked whether there may be issues with variable overriding
 		Specially, FOR loop iteration variables need to be properly parsed
 		"""
-		self.variables = {}
+		self.variables = state_variables
 		for obj in procedure['args']['args']:
 			self.variables[obj['arg']] = obj['arg']
+		for s in ENV_VAR:
+			self.variables[s] = s
+		for s in CONSTS:
+			self.variables[s] = s
 		#PROBLEMS: the variables mapping is still not right (0,1). There is a problem with variables with the same name
 		self.get_variables(self.procedure.copy()) #dict of all variable ids (including for iteration variables) to values (0 if value = 0 else 1)
 		#self.variable_names = variables_names #mapping of variable ids to names
 		self.graph = {}
+		print("fine")
+
+	def run(self):
+		for obj in self.whiles.keys():
+			self.whiles[obj] = self.calculate(self.whiles[obj])
+		return self.whiles
 		#return self.calculate()
+
+	def get_whiles(self, procedure):
+		if isinstance(procedure, list):
+			for obj in procedure:
+				self.get_whiles(obj)
+		elif procedure['ast_type'] == "If":
+			self.get_whiles(procedure['body'])
+			self.get_whiles(procedure['orelse'])
+		elif procedure['ast_type'] == "For":
+			self.get_whiles(procedure['body'])
+		elif procedure['ast_type'] == "While":
+			self.whiles[procedure['node_id']] = procedure
+			self.get_whiles(procedure['body'])
+		else:
+			return
 
 	def get_variables(self, procedure):
 		if isinstance(procedure, list):
 			for i in procedure:
+				print("for")
+				print(i)
 				self.get_variables(i)
 		elif procedure['ast_type'] == "If":
 			self.get_variables(procedure['body'])
@@ -37,25 +69,59 @@ class ITRS:
 			self.get_variables(procedure['body'])
 		elif procedure['ast_type'] == "For":
 			self.variables[procedure['target']['id']] = '0'
+			self.get_variables(procedure['body'])
 			if procedure['iter']['ast_type'] == "Call":
 				self.variables['count'] = 'count' #else, give error, we don't know list length yet
+		elif procedure['ast_type'] == "Call":
+			return
+		#elif procedure['ast_type'] == "Assign" and procedure['target']['ast_type'] == "Attribute":
+		#	return
 		elif procedure['ast_type'] == "Assign" or procedure['ast_type'] == "AnnAssign":
 			if 'value' in procedure.keys() and procedure['value']['ast_type'] == "List":
-				self.manage_list(procedure, procedure['target']['id'])
+				s = self.get_full_name(procedure['target'])
+				print("about list")
+				self.manage_list(procedure, s)
+				print(self.variables)
+			elif 'value' in procedure.keys() and procedure['value']['ast_type'] == "Call":
+				if procedure['value']['func']['id'] in self.structs.keys():
+					for i in self.structs[procedure['value']['func']['id']]:
+						s = self.get_full_name(procedure['target'])
+						self.variables[s+"."+i] = s+"."+i
 			else:
-				self.variables[procedure['target']['id']] = procedure['target']['id']
+				print("normal")
+				print(procedure)
+				s = self.get_full_name(procedure['target'])
+				self.variables[s] = s
+
 		#elif procedure['ast_type'] == "AnnAssign":
 			#self.variables[procedure['target']['id']] = procedure['target']['id']
 
+	def get_full_name(self, procedure):
+		if procedure['ast_type'] == "Name":
+			return procedure['id']
+		if procedure['ast_type'] == "Int":
+			return str(procedure['value'])
+		if procedure['ast_type'] == "Attribute":
+			return self.get_full_name(procedure['value'])+"."+procedure['attr']
+		if procedure['ast_type'] == "Subscript": #check for matrixes and test
+			return self.get_full_name(procedure['value'])+"_e"+self.get_full_name(procedure['slice'])
+		if procedure['ast_type'] == "Index":
+			if procedure['value']['ast_type'] == "Int":
+				return self.get_full_name(procedure['value'])
+			else:
+				#TODO: give error
+				pass
+
 	def manage_list(self, procedure, target_id, s = ""):
+		print("hey")
+		print(procedure)
 		for i in range(len(procedure['value']['elements'])):
 			if procedure['value']['elements'][i]['ast_type'] == "List":
 				self.manage_list(procedure['value']['elements'][i], target_id, s+str(i)+"_")
 			else:
 				self.variables[target_id+"_e"+s+str(i)] = target_id+"_e"+s+str(i)
 
-	def calculate(self):
-		print("in calculate")
+	def calculate(self, procedure):
 		source_init = """(GOAL COMPLEXITY)\n(STARTTERM (FUNCTIONSYMBOLS l0))\n"""
 
 		if not self.variables:
@@ -73,9 +139,10 @@ class ITRS:
 			#0 if key value is = 0, else != 0
 
 			self.graph['l0'] = []
-			self.make_graph(self.procedure, 'l0', self.variables.copy())
-
+			self.make_graph(procedure, 'l0', self.variables.copy())
 			source_init += self.set_rules(param)
+			self.graph = {}
+			print(source_init)
 			return source_init
 
 	def get_new_stname(self):
@@ -85,19 +152,13 @@ class ITRS:
 
 	def set_rules(self, param):
 		rules = "(RULES\n\t"
-		print("in rules")
-		print(self.graph)
 		for i in self.graph.keys():
-			print("in in rules")
 			for state in range(len(self.graph[i])):
 				rules += i+param+" -> Com_1("
 				rules += self.graph[i][state][0]+"("
-				print(self.graph[i][state][1])
 				for s in range(len(self.graph[i][state][1])):
 					rules += ("," if s > 0  else "") + self.graph[i][state][1][s]
-				print(self.graph[i][state][2])
 				rules += ")) :|: "
-				print("test")
 				for rule in self.graph[i][state][2]:
 					rules += (" || " if rule != self.graph[i][state][2][0] else "") + rule
 				rules += "\n\t"
@@ -115,8 +176,7 @@ class ITRS:
 	"""
 
 	def make_graph(self, procedure, stname, variables):
-		print("In make_graph")
-		print(variables)
+		print("make_graph")
 		print(procedure)
 		base_vars = list((str(value) for value in self.variables.values()))
 		if isinstance(procedure, list):
@@ -132,8 +192,13 @@ class ITRS:
 			self.graph[stname].append([new_name, vars, rules])
 			self.graph[new_name] = []
 			new_stname, variables = self.make_graph(procedure['body'], new_name, self.variables.copy())
+			print("if")
+			print(variables)
+			vars = list((value for value in variables.values()))
 			out_block = self.get_new_stname()
-			self.graph[new_stname].append([out_block, variables.copy(), ["TRUE"]])
+			if new_stname not in self.graph.keys():
+				self.graph[new_stname] = []
+			self.graph[new_stname].append([out_block, vars, ["TRUE"]]) #changed base_vars to vars
 			if procedure['orelse'] and len(procedure['orelse']) > 0: #else
 				else_rules = []
 				for i in range(len(rules)):
@@ -142,10 +207,15 @@ class ITRS:
 				self.graph[stname].append([new_name2, vars, else_rules])
 				self.graph[new_name2] = []
 				new_stname2, variables = self.make_graph(procedure['orelse'], new_name2, self.variables.copy())
-				self.graph[new_stname2].append([out_block, variables.copy(), ["TRUE"]])
+				if new_stname2 not in self.graph.keys():
+					self.graph[new_stname2] = []
+				vars = list((value for value in variables.values()))
+				self.graph[new_stname2].append([out_block, vars, ["TRUE"]]) #changed base_vars to vars
 				#gestisci caso di elif
 			stname = out_block
 			self.graph[stname] = []
+			print("if2")
+			print(variables)
 		elif procedure['ast_type'] == "For":
 			vars = list((value for value in variables.values()))
 			if procedure['iter']['ast_type'] == "Call":
@@ -188,55 +258,51 @@ class ITRS:
 			stname = out_block
 		else:
 			variables = self.get_expr(procedure, variables.copy())
-			print("var")
-			print(variables)
-			#variables = list((str(value) for value in variables.values()))
 		return stname, variables
 
 	def get_expr(self, procedure, variables):
-		print("in get_expr")
 		print(procedure)
-		if procedure['ast_type'] == "Assign" or procedure['ast_type'] == "AnnAssign": #lists have to be managed properly yet
-			print("assign annassing")
+		if procedure['ast_type'] == "Assign" or procedure['ast_type'] == "AnnAssign":
+			print("ab")
+			print(variables)
+			print(procedure)
 			if procedure['value']['ast_type'] == "List":
 				self.manage_list_expr(procedure, procedure['target']['id'], variables)
+			elif procedure['target']['ast_type'] == "Attribute":
+				variables[self.get_full_name(procedure['target'])] = self.get_expr(procedure['value'], variables)
+				print("a")
+				print(variables)
 			else:
-				print("in else")
-				variables[procedure['target']['id']] = self.get_expr(procedure['value'], variables)
-			print(variables)
+				variables[self.get_full_name(procedure['target'])] = self.get_expr(procedure['value'], variables)
 			return variables
 		elif procedure['ast_type'] == "AugAssign":
 			op = self.get_op(procedure)
-			variables[procedure['target']['id']] = procedure['target']['id'] + op + self.get_expr(procedure['value'], variables)
-			print("Augassign")
-			print(variables)
+			if procedure['target']['ast_type'] == "Attribute":
+				variables[self.get_full_name(procedure['target'])] = self.get_expr(procedure['target'], variables) + op + self.get_expr(procedure['value'], variables)
+			else:
+				variables[self.get_full_name(procedure['target'])] = self.get_expr(procedure['target'], variables) + op + self.get_expr(procedure['value'], variables)
 			return variables
-		elif procedure['ast_type'] == "Subscript":
+		elif procedure['ast_type'] == "Subscript": #matrixes should have problems
 			if procedure['slice']['ast_type'] == "Index":
 				if procedure['slice']['value']['ast_type'] == "Int":
-					print("Subscript")
-					print(variables)
-					return procedure['value']['id']+"_e"+procedure['slice']['value']['value']
+					return procedure['value']['id']+"_e"+str(procedure['slice']['value']['value'])
 				else:
 					#TODO: give error
-					print("error")
 					pass
+		elif procedure['ast_type'] == "Call":
+			if procedure['value']['id'] in BUILT_IN:
+				return
+			else:
+				self.func_needed.append(procedure['func']['id']) #missing: external function handling
 		elif procedure['ast_type'] == "BinOp":
 			op = self.get_op(procedure)
-			print("BinOp")
-			print(variables)
 			c = self.get_expr(procedure['left'], variables) + op + self.get_expr(procedure['right'], variables)
-			print("ccc")
-			print(c)
-			print(variables)
 			return c
+		elif procedure['ast_type'] == "Attribute":
+			return self.get_expr(procedure['value'], variables) + "." + procedure['attr']
 		elif procedure['ast_type'] == "Name":
-			print("name")
-			print(variables)
 			return procedure['id']
 		elif procedure['ast_type'] == "Int":
-			print("int")
-			print(variables)
 			return str(procedure['value'])
 
 	def manage_list_expr(self, procedure, target_id, variables, s = ""):
@@ -254,12 +320,11 @@ class ITRS:
 			op = "-"
 		elif procedure['op']['ast_type'] == "Mult":
 			op = "*"
-		elif procedure['op']['ast_type'] == "Div": #to be checked
+		elif procedure['op']['ast_type'] == "Div": #mod to be added
 			op = "/"
 		return op
 
 	def create_sat_expression(self, condition, m): #map is used to map linear expression to boolean values, so that pyade can generate the 
-		print("condition")
 		print(condition)
 		if "op" in condition.keys() and (condition['ast_type'] == "BinOp" or condition['ast_type'] == "UnaryOp") or condition['ast_type'] == "BoolOp":
 			if condition['op']['ast_type'] == "Or":
@@ -275,7 +340,7 @@ class ITRS:
 			elif condition['op']['ast_type'] == "Sub":
 				return self.create_sat_expression(condition['left'], m) + " - " + self.create_sat_expression(condition['right'], m)
 			elif condition['op']['ast_type'] == "Div":
-				return self.create_sat_expression(condition['left'], m) + " / " + self.create_sat_expression(condition['right'], m)
+				return self.create_sat_expression(condition['left'], m) + " / " + self.create_sat_expression(condition['right'], m) #mod to be added
 
 
 		elif condition['ast_type'] == "Compare":
@@ -291,11 +356,13 @@ class ITRS:
 		elif condition['ast_type'] == "Subscript":
 			if condition['slice']['ast_type'] == "Index":
 				if condition['slice']['value']['ast_type'] == "Int":
-					return condition['target']['id']+"_e"+condition['slice']['value']['value']
+					return condition['value']['id']+"_e"+str(condition['slice']['value']['value'])
 				else:
 					#TODO: give error
 					pass
 
+		elif condition['ast_type'] == "Attribute":
+			return condition['attr']
 		elif condition['ast_type'] == "Name":
 			return condition['id']
 		elif condition['ast_type'] == "Int":
