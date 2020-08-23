@@ -1,4 +1,6 @@
+import os
 from vyper.itrs.__init__ import ITRS
+from vyper.itrs.koat import KOAT
 
 class ITRS_global:
 
@@ -6,9 +8,10 @@ class ITRS_global:
 		self.state_vars, self.functions, self.structs = self.get_globals(procedure)
 		self.itrs = [] #itrs will have the dicts of the parsed whiles in each function
 		for i in self.functions:
-			print("func")
-			print(i)
 			self.itrs.append(ITRS(i, self.state_vars.copy(), self.structs.copy()).run())
+		print(self.itrs)
+
+		self.itrs = KOAT().get_bounds(self.itrs)
 		print(self.itrs)
 
 	"""

@@ -2,6 +2,7 @@ from sympy import symbols
 from sympy.logic.boolalg import to_dnf
 from vyper.itrs.const import BUILT_IN, ENV_VAR, CONSTS
 from vyper.itrs.init_func import *
+import os
 
 class ITRS:
 
@@ -13,8 +14,6 @@ class ITRS:
 		self.func_needed = [] #stores the names of the functions in which the procedure depends
 		self.structs = state_structs
 		self.whiles = get_whiles(procedure['body']) #mapping from node_id of while to while ast. In the end, instead of while ast, there will be the while itrs code
-		print("whiles")
-		print(self.whiles)
 		self.variables = get_env_var(procedure, state_variables, state_structs)
 		#self.procedure = procedure['body']
 		#PROBLEMS: the variables mapping is still not right (0,1). There is a problem with variables with the same name
@@ -26,16 +25,12 @@ class ITRS:
 	"""
 
 	def run(self):
-		print("run")
-		print(self.whiles.keys())
 		for obj in self.whiles.keys():
-			print("while")
-			print(self.whiles[obj])
 			self.whiles[obj] = self.calculate(self.whiles[obj])
 		return self.whiles
 
 	def calculate(self, procedure):
-		source_init = """(GOAL COMPLEXITY)\n(STARTTERM (FUNCTIONSYMBOLS l0))\n"""
+		source_init = "(GOAL COMPLEXITY)" + os.linesep + "(STARTTERM (FUNCTIONSYMBOLS l0))" + os.linesep #\n
 
 		if not self.variables:
 			return -1
@@ -45,7 +40,7 @@ class ITRS:
 			for s in self.variables.keys():
 				var_string = var_string + " " + s
 				param += ("," if param != "(" else "") + s #param is only used inside set_rules. It makes easier to output (A,B,C,...) strings
-			var_string += ")\n"
+			var_string += ")"+os.linesep #\n
 			param += ")"
 			source_init += var_string
 
@@ -55,6 +50,7 @@ class ITRS:
 			self.make_graph(procedure, 'l0', self.variables.copy())
 			source_init += self.set_rules(param)
 			self.graph = {}
+			print("source init")
 			print(source_init)
 			return source_init
 
@@ -63,7 +59,7 @@ class ITRS:
 	"""
 
 	def set_rules(self, param):
-		rules = "(RULES\n\t"
+		rules = "(RULES"+os.linesep #\n\t
 		for i in self.graph.keys():
 			for state in range(len(self.graph[i])):
 				rules += i+param+" -> Com_1("
@@ -73,7 +69,7 @@ class ITRS:
 				rules += ")) :|: "
 				for rule in self.graph[i][state][2]:
 					rules += (" || " if rule != self.graph[i][state][2][0] else "") + rule
-				rules += "\n\t"
+				rules += ""+os.linesep #\n\t
 		rules += ")"
 
 		return rules
@@ -93,8 +89,6 @@ class ITRS:
 	"""
 
 	def make_graph(self, procedure, stname, variables):
-		print("oppala")
-		#print(procedure)
 		base_vars = list((str(value) for value in self.variables.values()))
 		if isinstance(procedure, list):
 			for com in procedure:
@@ -115,9 +109,10 @@ class ITRS:
 			if procedure['orelse'] and len(procedure['orelse']) > 0:
 				else_rules = []
 				for i in range(len(rules)):
-					else_rules.append("!("+rules[i]+")")
+					else_rules.extend(self.negate(rules[i]))
 				new_name2 = self.get_new_stname()
-				self.graph[stname].append([new_name2, vars, else_rules])
+				for i in else_rules:
+					self.graph[stname].append([new_name2, vars, [i]])
 				self.graph[new_name2] = []
 				new_stname2, variables = self.make_graph(procedure['orelse'], new_name2, self.variables.copy())
 				if new_stname2 not in self.graph.keys():
@@ -144,8 +139,8 @@ class ITRS:
 				self.graph[new_stname] = []
 			self.graph[new_stname].append([new_name, lst, [rule]]) #back_edge
 			out_block = self.get_new_stname()
-			not_rule = "!("+rule+")"
-			self.graph[new_name].append([out_block, base_vars, [not_rule]]) #exit
+			not_rule = self.negate(rule)
+			self.graph[new_name].append([out_block, base_vars, not_rule]) #exit
 			stname = out_block
 		elif procedure['ast_type'] == "While":
 			vars = list((value for value in variables.values()))
@@ -163,9 +158,10 @@ class ITRS:
 			out_block = self.get_new_stname()
 			exit_rules = []
 			for i in range(len(rules)):
-				exit_rules.append("!("+rules[i]+")")
-			self.graph[stname].append([out_block, base_vars, exit_rules])
-			self.graph[new_name].append([out_block, base_vars, exit_rules])
+				exit_rules.extend(self.negate(rules[i]))
+			for i in exit_rules:
+				self.graph[stname].append([out_block, base_vars, [i]])
+				self.graph[new_name].append([out_block, base_vars, [i]])
 			stname = out_block
 		else:
 			variables = self.get_expr(procedure, variables.copy())
@@ -187,7 +183,9 @@ class ITRS:
 	def get_expr(self, procedure, variables):
 		if procedure['ast_type'] == "Assign" or procedure['ast_type'] == "AnnAssign":
 			if procedure['value']['ast_type'] == "List":
-				self.manage_list_expr(procedure, procedure['target']['id'], variables)
+				variables = self.manage_list_expr(procedure, get_full_name(procedure['target']), variables)
+			elif procedure['value']['ast_type'] == "Call":
+				variables = self.manage_struct_expr(procedure, get_full_name(procedure['target']), variables)
 			elif procedure['target']['ast_type'] == "Attribute":
 				variables[get_full_name(procedure['target'])] = self.get_expr(procedure['value'], variables)
 			else:
@@ -203,7 +201,7 @@ class ITRS:
 		elif procedure['ast_type'] == "Subscript": #matrixes should have problems
 			if procedure['slice']['ast_type'] == "Index":
 				if procedure['slice']['value']['ast_type'] == "Int":
-					return procedure['value']['id']+"_e"+str(procedure['slice']['value']['value'])
+					return variables[get_full_name(procedure)] #variables[procedure['value']['id']+"_e"+str(procedure['slice']['value']['value'])]
 				else:
 					#TODO: give error
 					pass
@@ -217,11 +215,18 @@ class ITRS:
 			c = self.get_expr(procedure['left'], variables) + op + self.get_expr(procedure['right'], variables)
 			return c
 		elif procedure['ast_type'] == "Attribute":
-			return self.get_expr(procedure['value'], variables) + "." + procedure['attr']
+			return str(variables[get_full_name(procedure)])
+			#return self.get_expr(procedure['value'], variables) + "." + procedure['attr']
 		elif procedure['ast_type'] == "Name":
-			return procedure['id']
+			return variables[procedure['id']]
 		elif procedure['ast_type'] == "Int":
 			return str(procedure['value'])
+
+
+	def manage_struct_expr(self, procedure, target_id, variables, s=""):
+		for i in range(len(procedure['value']['args'][0]['values'])): #the 0 worries me
+			variables[target_id+"."+procedure['value']['args'][0]['keys'][i]['id']] = procedure['value']['args'][0]['values'][i]['value']
+		return variables
 
 	"""
 	manages lists in right hand-side expressions. It's similar to manage_list, but it changes the variables' values
@@ -230,7 +235,7 @@ class ITRS:
 	def manage_list_expr(self, procedure, target_id, variables, s = ""):
 		for i in range(len(procedure['value']['elements'])):
 			if procedure['value']['elements'][i]['ast_type'] == "List":
-				variables = self.manage_list_expr(procedure['value']['elements'][i], target_id, s+str(i)+"_")
+				variables = self.manage_list_expr(procedure['value']['elements'][i], target_id, s+str(i)+"_e")
 			else:
 				variables[target_id+"_e"+s+str(i)] = self.get_expr(procedure['value']['elements'][i], variables)
 		return variables
@@ -254,45 +259,74 @@ class ITRS:
 	create conditions (derived from if, for, while entry conditions) in a format such that sympy can parse them into dnf (disjunctive normal forms)
 	"""
 
-	def create_sat_expression(self, condition, m): #map is used to map linear expression to boolean values, so that pyade can generate the 
-		print(condition)
+	def create_sat_expression(self, condition, m, negate = 0): #map is used to map linear expression to boolean values, so that pyade can generate the 
 		if "op" in condition.keys() and (condition['ast_type'] == "BinOp" or condition['ast_type'] == "UnaryOp") or condition['ast_type'] == "BoolOp":
 			if condition['op']['ast_type'] == "Or":
-				return self.create_sat_expression(condition['values'][0], m) | self.create_sat_expression(condition['values'][1], m)
+				return self.create_sat_expression(condition['values'][0], m, negate) | self.create_sat_expression(condition['values'][1], m, negate)
 			elif condition['op']['ast_type'] == "And":
-				return self.create_sat_expression(condition['values'][0], m) & self.create_sat_expression(condition['values'][1], m)
+				return self.create_sat_expression(condition['values'][0], m, negate) & self.create_sat_expression(condition['values'][1], m, negate)
 			elif condition['op']['ast_type'] == "Not":
-				return ~self.create_sat_expression(condition['operand'], m)
+				return self.create_sat_expression(condition['operand'], m, 1-negate)
 			elif condition['op']['ast_type'] == "Add":
-				return self.create_sat_expression(condition['left'], m) + " + " + self.create_sat_expression(condition['right'], m)
+				return self.create_sat_expression(condition['left'], m, negate) + " + " + self.create_sat_expression(condition['right'], m, negate)
 			elif condition['op']['ast_type'] == "Mult":
-				return self.create_sat_expression(condition['left'], m) + " * " + self.create_sat_expression(condition['right'], m)
+				return self.create_sat_expression(condition['left'], m, negate) + " * " + self.create_sat_expression(condition['right'], m, negate)
 			elif condition['op']['ast_type'] == "Sub":
-				return self.create_sat_expression(condition['left'], m) + " - " + self.create_sat_expression(condition['right'], m)
+				return self.create_sat_expression(condition['left'], m, negate) + " - " + self.create_sat_expression(condition['right'], m, negate)
 			elif condition['op']['ast_type'] == "Div":
-				return self.create_sat_expression(condition['left'], m) + " / " + self.create_sat_expression(condition['right'], m) #mod to be added
+				return self.create_sat_expression(condition['left'], m, negate) + " / " + self.create_sat_expression(condition['right'], m, negate) #mod to be added
 
 
 		elif condition['ast_type'] == "Compare":
 			if condition['op']['ast_type'] == "Gt":
-				s = self.create_sat_expression(condition['left'], m) + " > " + self.create_sat_expression(condition['right'], m)
+				s = self.create_sat_expression(condition['left'], m, negate) + (" > " if not negate else " <= ") + self.create_sat_expression(condition['right'], m, negate)
 			elif condition['op']['ast_type'] == "Lt":
-				s = self.create_sat_expression(condition['left'], m) + " < " + self.create_sat_expression(condition['right'], m)
+				s = self.create_sat_expression(condition['left'], m, negate) + (" < " if not negate else " >= ") + self.create_sat_expression(condition['right'], m, negate)
 			elif condition['op']['ast_type'] == "Eq":
-				s = self.create_sat_expression(condition['left'], m) + " = " + self.create_sat_expression(condition['right'], m)
+				#koat doesn't have equal
+				if not negate:
+					s1 = self.create_sat_expression(condition['left'], m, negate) + " <= " + self.create_sat_expression(condition['right'], m, negate)
+					s2 = self.create_sat_expression(condition['left'], m, negate) + " >= " + self.create_sat_expression(condition['right'], m, negate)
+					m.append(s1)
+					m.append(s2)
+					
+					return symbols("v"+str(len(m)-2)) & symbols("v"+str(len(m)-1))
+				else:
+					s1 = self.create_sat_expression(condition['left'], m, negate) + " > " + self.create_sat_expression(condition['right'], m, negate)
+					s2 = self.create_sat_expression(condition['left'], m, negate) + " < " + self.create_sat_expression(condition['right'], m, negate)
+					m.append(s1)
+					m.append(s2)
+					return symbols("v"+str(len(m)-2)) | symbols("v"+str(len(m)-1))
+			elif condition['op']['ast_type'] == "GtE":
+				s = self.create_sat_expression(condition['left'], m, negate) + (" >= " if not negate else " < ") + self.create_sat_expression(condition['right'], m, negate)
+			elif condition['op']['ast_type'] == "LtE":
+				s = self.create_sat_expression(condition['left'], m, negate) + (" <= " if not negate else " > ") + self.create_sat_expression(condition['right'], m, negate)
+			elif condition['op']['ast_type'] == "NotEq":
+				if not negate:
+					s1 = self.create_sat_expression(condition['left'], m, negate) + " < " + self.create_sat_expression(condition['right'], m, negate)
+					s2 = self.create_sat_expression(condition['left'], m, negate) + " > " + self.create_sat_expression(condition['right'], m, negate)
+					m.append(s1)
+					m.append(s2)
+					return symbols("v"+str(len(m)-2)) | symbols("v"+str(len(m)-1))
+				else:
+					s1 = self.create_sat_expression(condition['left'], m, negate) + " >= " + self.create_sat_expression(condition['right'], m, negate)
+					s2 = self.create_sat_expression(condition['left'], m, negate) + " <= " + self.create_sat_expression(condition['right'], m, negate)
+					m.append(s1)
+					m.append(s2)
+					return symbols("v"+str(len(m)-2)) & symbols("v"+str(len(m)-1))
 			m.append(s)
 			return symbols("v"+str(len(m)-1)) #sympy can't parse to dnf unless the expression is in propositional logic. With this, every compare command is mapped to a term
 
 		elif condition['ast_type'] == "Subscript":
 			if condition['slice']['ast_type'] == "Index":
 				if condition['slice']['value']['ast_type'] == "Int":
-					return condition['value']['id']+"_e"+str(condition['slice']['value']['value'])
+					return get_full_name(condition)
 				else:
 					#TODO: give error
 					pass
 
 		elif condition['ast_type'] == "Attribute":
-			return condition['attr']
+			return get_full_name(condition)
 		elif condition['ast_type'] == "Name":
 			return condition['id']
 		elif condition['ast_type'] == "Int":
@@ -303,7 +337,46 @@ class ITRS:
 		f = to_dnf(self.create_sat_expression(condition, m))
 		f = str(f)
 		for i in range(len(m)):
-			f = f.replace("v"+str(i), "("+m[i]+")") #Change terms into their compare values. There will be problem if variables like v1 are declared
+			f = f.replace("v"+str(i), m[i]) #Change terms into their compare values. There will be problem if variables like v1 are declared
 		f = f.replace('~','!')
 		f = f.replace('&', '&&')
+		f = f.replace('|', '||')
 		return f
+
+	def negate(self, rule):
+		change = {
+			"<" : ">=",
+			">" : "<=",
+			"<=" : ">",
+			">=" : "<",
+			"&&" : "||",
+			"||" : "&&"
+		}
+
+		lst_rule = list(rule)
+		i = 0
+		while i<len(lst_rule):
+			if lst_rule[i] == "<":
+				if i+1 < len(lst_rule) and lst_rule[i+1] == "=":
+					lst_rule[i] = change["<="]
+					lst_rule.pop(i+1)
+				else:
+					lst_rule[i] = change["<"]
+			elif lst_rule[i] == ">":
+				if i+1 < len(lst_rule) and lst_rule[i+1] == "=":
+					lst_rule[i] = change[">="]
+					lst_rule.pop(i+1)
+				else:
+					lst_rule[i] = change[">"]
+			elif lst_rule[i] == "&":
+				if i+1 < len(lst_rule):
+					lst_rule.pop(i+1)
+				lst_rule[i] = change["&&"]
+			elif lst_rule[i] == "|":
+				if i+1 < len(lst_rule):
+					lst_rule.pop(i+1)
+				lst_rule[i] = change["||"]
+			i+=1
+		rule = ''.join(lst_rule)
+		rule = str(rule).split("||") #rule, at this point, is always only one element. If or is in the rule, the conditions get splitted
+		return [rule] if isinstance(rule, str) else rule

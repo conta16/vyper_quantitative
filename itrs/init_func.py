@@ -12,7 +12,6 @@ def get_env_var(procedure, state_variables, structs):
 	for s in CONSTS:
 		variables[s] = s
 	variables = get_variables(procedure['body'].copy(), structs, variables)
-	print("aia")
 	return variables
 
 """
@@ -20,8 +19,6 @@ return a dict with the ast of the whiles inside the procedure. As keys they will
 """
 
 def get_whiles(procedure, whiles = {}):
-	print("init")
-	print(whiles)
 	if isinstance(procedure, list):
 		for obj in procedure:
 			whiles = get_whiles(obj, whiles)
@@ -33,8 +30,6 @@ def get_whiles(procedure, whiles = {}):
 	elif procedure['ast_type'] == "While":
 		whiles[procedure['node_id']] = procedure
 		whiles = get_whiles(procedure['body'], whiles)
-	print("return while")
-	print(whiles.keys())
 	return whiles.copy()
 
 """
@@ -43,9 +38,6 @@ return a dict with all the local variables
 
 
 def get_variables(procedure, structs, variables = {}):
-	print("get_variables")
-	print(procedure)
-	print(variables)
 	if isinstance(procedure, list):
 		for i in procedure:
 			variables = get_variables(i, structs, variables)
@@ -64,7 +56,7 @@ def get_variables(procedure, structs, variables = {}):
 	elif procedure['ast_type'] == "Assign" or procedure['ast_type'] == "AnnAssign":
 		if 'value' in procedure.keys() and procedure['value']['ast_type'] == "List": #if a list is the right expression
 			s = get_full_name(procedure['target'])
-			variables = manage_list(procedure, s, variables)
+			variables = manage_list(procedure['value'], s, variables)
 		elif 'value' in procedure.keys() and procedure['value']['ast_type'] == "Call": #if a struct is the right expression
 			if procedure['value']['func']['id'] in structs.keys():
 				for i in structs[procedure['value']['func']['id']]:
@@ -101,9 +93,9 @@ return the variables obtained from a list that is a right expression
 """
 
 def manage_list(procedure, target_id, variables, s = ""):
-	for i in range(len(procedure['value']['elements'])):
-		if procedure['value']['elements'][i]['ast_type'] == "List":
-			variables = manage_list(procedure['value']['elements'][i], target_id, variables, s+str(i)+"_")
+	for i in range(len(procedure['elements'])):
+		if procedure['elements'][i]['ast_type'] == "List":
+			variables = manage_list(procedure['elements'][i], target_id, variables, s+str(i)+"_e")
 		else:
 			variables[target_id+"_e"+s+str(i)] = target_id+"_e"+s+str(i)
 	return variables
