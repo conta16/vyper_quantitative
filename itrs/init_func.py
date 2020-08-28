@@ -3,15 +3,28 @@ from vyper.itrs.const import BUILT_IN, ENV_VAR, CONSTS
 """
 return a dict with state variables, func parameters, consts, built_in variables and local function variables
 """
-def get_env_var(procedure, state_variables, structs):
+def get_env_var(procedure, state_variables, state_types, structs):
 	variables = state_variables
+	types = state_types
 	for obj in procedure['args']['args']:
 		variables[obj['arg']] = obj['arg']
+		types[obj['arg']] = obj['annotation']['id']
 	for s in ENV_VAR:
 		variables[s] = s
 	for s in CONSTS:
 		variables[s] = s
-	variables = get_variables(procedure['body'].copy(), structs, variables)
+	m = [0]
+	variables = get_variables(procedure['body'].copy(), structs, types, variables, m)
+	variables = create_len_var(variables, types, m)
+	print("out get var")
+	print(variables)
+	return variables, types
+
+
+def create_len_var(variables, types, m):
+	for i in range(m[0]):
+		variables['v'+str(i)] = i
+		types['v'+str(i)] = "Int"
 	return variables
 
 """
@@ -37,34 +50,85 @@ return a dict with all the local variables
 """
 
 
-def get_variables(procedure, structs, variables = {}):
+def get_variables(procedure, structs, types, variables = {}, m = [0]):
+	print(procedure)
 	if isinstance(procedure, list):
 		for i in procedure:
-			variables = get_variables(i, structs, variables)
+			print("in loop")
+			variables = get_variables(i, structs, types, variables, m)
+			print("end loop")
 	elif procedure['ast_type'] == "If":
-		variables = get_variables(procedure['body'], structs, variables)
-		variables = get_variables(procedure['orelse'], structs, variables)
+		variables = get_variables(procedure['body'], structs, types, variables, m)
+		variables = get_variables(procedure['orelse'], structs, types, variables, m)
 	elif procedure['ast_type'] == "While":
-		variables = get_variables(procedure['body'], structs, variables)
+		variables = get_variables(procedure['body'], structs, types, variables, m)
 	elif procedure['ast_type'] == "For":
 		variables[procedure['target']['id']] = '0'
-		variables = get_variables(procedure['body'], structs, variables)
+		types[procedure['target']['id']] = 'uint256'
+		variables = get_variables(procedure['body'], structs, types, variables, m)
 		if procedure['iter']['ast_type'] == "Call":
 			variables['count'] = 'count' #else, give error, we don't know list length yet
+			types['count'] = 'uint256'
 	elif procedure['ast_type'] == "Call":
 		return variables
+		#if procedure['value']['func']['id'] in self.structs:
 	elif procedure['ast_type'] == "Assign" or procedure['ast_type'] == "AnnAssign":
 		if 'value' in procedure.keys() and procedure['value']['ast_type'] == "List": #if a list is the right expression
 			s = get_full_name(procedure['target'])
-			variables = manage_list(procedure['value'], s, variables)
+			variables[s] = s
+			types[s] = "List"
+			variables = manage_list(procedure['value'], s, variables, types, m)
+		elif procedure['value']['ast_type'] == "Name" and procedure['value']['id'] in types.keys():
+			if types[procedure['value']['id']] == "List" or types[procedure['value']['id']] == "Struct":
+				if types[procedure['value']['id']] == "List":
+					el = [key for key in variables.keys() if procedure['value']['id']+"_e" in key]
+				if types[procedure['value']['id']] == "Struct":
+					el = [key for key in variables.keys() if procedure['value']['id']+"." in key]
+				fname = get_full_name(procedure['target'])
+				variables[fname] = variables[procedure['value']['id']]
+				types[fname] = types[procedure['value']['id']]
+				for obj in el:
+					name = fname+obj[len(procedure['value']['id'])::]
+					variables[name] = variables[obj]
+					types[name] = types[obj]
+
 		elif 'value' in procedure.keys() and procedure['value']['ast_type'] == "Call": #if a struct is the right expression
+			print(structs.keys())
 			if procedure['value']['func']['id'] in structs.keys():
-				for i in structs[procedure['value']['func']['id']]:
-					s = get_full_name(procedure['target'])
-					variables[s+"."+i] = s+"."+i
+				print("ent")
+				s = get_full_name(procedure['target'])
+				variables[s] = s
+				types[s] = "Struct"
+				for pos in range(len(structs[procedure['value']['func']['id']])):
+					i = structs[procedure['value']['func']['id']][pos]
+					if procedure['value']['args'][0]['values'][pos]['ast_type'] == "Name":
+						t = procedure['value']['args'][0]['values'][pos]['id']
+						if types[t] == "List" or types[t] == "Struct":
+							#i = structs[procedure['value']['func']['id']][pos]
+							print("ent2")
+							print(s+"."+i[0])
+							if types[t] == "List":
+								el = [key for key in variables.keys() if t+"_e" in key]
+							if types[t] == "Struct":
+								el = [key for key in variables.keys() if t+"." in key]
+							for obj in el:
+								name = s+"."+i[0]+obj[len(t)::]
+								variables[name] = variables[obj]
+								types[name] = types[obj]
+					if procedure['value']['args'][0]['values'][pos]['ast_type'] == "List":
+						variables = manage_list(procedure['value']['args'][0]['values'][pos]['value'], s+"."+i[0], variables, types, m)
+					variables[s+"."+i[0]] = s+"."+i[0]
+					types[s+"."+i[0]] = i[1]
+					print(variables)
+					print(types)
+				print("out")
 		else:
 			s = get_full_name(procedure['target'])
 			variables[s] = s
+			if 'annotation' in procedure.keys():
+				types[s] = procedure['annotation']['id']
+	print("ret var")
+	print(variables)
 	return variables
 	#elif procedure['ast_type'] == "AnnAssign":
 		#self.variables[procedure['target']['id']] = procedure['target']['id']
@@ -74,6 +138,7 @@ return the name of the variable, considering also subscripts(example, var[1]), s
 """
 
 def get_full_name(procedure):
+	print("getfullname")
 	if procedure['ast_type'] == "Name":
 		return procedure['id']
 	if procedure['ast_type'] == "Int":
@@ -92,11 +157,25 @@ def get_full_name(procedure):
 return the variables obtained from a list that is a right expression
 """
 
-def manage_list(procedure, target_id, variables, s = ""):
+def manage_list(procedure, target_id, variables, types, m, s = ""):
+	l = 0
+	c = 0
 	for i in range(len(procedure['elements'])):
 		if procedure['elements'][i]['ast_type'] == "List":
-			variables = manage_list(procedure['elements'][i], target_id, variables, s+str(i)+"_e")
+			variables = manage_list(procedure['elements'][i], target_id, variables, types, m, s+str(i)+"_e")
+			#if tmp > m[0]:
+			#	m[0] = tmp
+			l += 1
 		else:
+			print(variables)
+			print(types)
 			variables[target_id+"_e"+s+str(i)] = target_id+"_e"+s+str(i)
+			types[target_id+"_e"+s+str(i)] = procedure['elements'][i]['ast_type']
+			c += 1
+	print("end manage")
+	if l > m[0]:
+		m[0] = l
+	if c > m[0]:
+		m[0] = c
 	return variables
 
