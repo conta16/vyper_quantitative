@@ -84,7 +84,6 @@ class Stmt(object):
         return self._assert_reason(0, self.stmt.exc)
 
     def _check_valid_assign(self, sub):
-        print(sub)
         if (
             isinstance(self.stmt.annotation, vy_ast.Name) and
             self.stmt.annotation.id == 'bytes32'
@@ -126,16 +125,14 @@ class Stmt(object):
                     f"Invalid type, expected {self.stmt.annotation.id}", self.stmt
                 )
         # Check that the integer literal, can be assigned to uint256 if necessary.
-        elif (self.stmt.annotation.id, sub.typ.subtype) == ('uint256', 'int128') and sub.typ.is_literal:
+        elif (self.stmt.annotation.id, sub.typ.typ) == ('uint256', 'int128') and sub.typ.is_literal:
             if not SizeLimits.in_bounds('uint256', sub.value):
                 raise InvalidLiteral(
                     'Invalid uint256 assignment, value not in uint256 range.', self.stmt
                 )
-        print(str(self.stmt.annotation.id))
-        print(str(sub.typ.subtype))
-        if str(self.stmt.annotation.id) != str(sub.typ.subtype):
+        elif self.stmt.annotation.id != sub.typ.typ:
             raise TypeMismatch(
-                f'Invalid type {sub.typ.subtype}, expected: {self.stmt.annotation.id}',
+                f'Invalid type {sub.typ.typ}, expected: {self.stmt.annotation.id}',
                 self.stmt,
             )
         else:
@@ -199,6 +196,7 @@ class Stmt(object):
                 and typ.typ == 'bytes32'
                 and sub.typ.is_literal
             )
+
             # If bytes[32] to bytes32 assignment rewrite sub as bytes32.
             if is_literal_bytes32_assign:
                 sub = LLLnode(
@@ -206,9 +204,8 @@ class Stmt(object):
                     typ=BaseType('bytes32'),
                     pos=getpos(self.stmt),
                 )
-            print("here")
+
             self._check_valid_assign(sub)
-            print("here2")
             self._check_same_variable_assign(sub)
             print("pos,typ,getpos(self.stmt)")
             print(pos)
@@ -223,7 +220,7 @@ class Stmt(object):
             print("variable_loc")
             print(variable_loc)
             o = make_setter(variable_loc, sub, 'memory', pos=getpos(self.stmt))
-            print("return")
+
             return o
 
     def _check_implicit_conversion(self, var_id, sub):
