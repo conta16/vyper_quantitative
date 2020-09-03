@@ -69,3 +69,54 @@ def remove_parenthesis(rule):
 	print("parenthesis")
 	print(rule)
 	return rule
+
+def get_substrs(var):
+	m = []
+	if isinstance(var,str):
+		while "_e(" in var:
+			m.append(var[var.find('(')+1: var.find(')')])
+			var = var[0: var.find('('):] + var[var.find(')')+1::]
+	return m
+
+def separate_by_op(var):
+	op_map = []
+	symb = {'+','*','-','/'}
+	for i in range(len(var)):
+		if var[i] in symb:
+			op_map.append(var[i])
+			var = var[:i] + '+' + var[i+1:]
+	return var.split('+'), op_map
+
+def list_sub(list, max):
+	index = 0
+	for i in range(len(list)):
+		if list[i] > 0:
+			index = i
+			break
+		if list[i] == 0:
+			list[i] = max[i]
+
+	list[index] -= 1
+	return list
+
+def get_reduced_list(list, num):
+	lst = []
+	if len(list) > num:
+		lst = list[num:]
+	return lst
+
+def reduce_list(list, num):
+	lst = []
+	if len(list) >= num:
+		lst = list[:num]
+	#for i in range(len(list)):
+	#	if "_e(" in list[i]:
+			
+	return lst
+
+def reduce_variables(variables):
+	for s in list(variables):
+		if "_e(" in s:
+			del variables[s]
+	return variables
+
