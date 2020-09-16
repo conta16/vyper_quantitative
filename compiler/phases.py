@@ -96,10 +96,6 @@ class CompilerData:
         self._lll_nodes, self._lll_runtime = generate_lll_nodes(
             self.source_code, self.global_ctx
         )
-        print("lll_nodes")
-        print(self._lll_nodes)
-        print("lll_runtime")
-        print(self._lll_runtime)
 
     @property
     def lll_nodes(self) -> parser.LLLnode:
@@ -117,16 +113,12 @@ class CompilerData:
     def assembly(self) -> list:
         if not hasattr(self, "_assembly"):
             self._assembly = generate_assembly(self.lll_nodes)
-        print("assembly")
-        print(self._assembly)
         return self._assembly
 
     @property
     def assembly_runtime(self) -> list:
         if not hasattr(self, "_assembly_runtime"):
             self._assembly_runtime = generate_assembly(self.lll_runtime)
-        print("assembly_runtime")
-        print(self._assembly_runtime)
         return self._assembly_runtime
 
     @property

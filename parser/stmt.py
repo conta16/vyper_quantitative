@@ -84,7 +84,6 @@ class Stmt(object):
         return self._assert_reason(0, self.stmt.exc)
 
     def _check_valid_assign(self, sub):
-        print(sub)
         if (
             isinstance(self.stmt.annotation, vy_ast.Name) and
             self.stmt.annotation.id == 'bytes32'
@@ -126,20 +125,19 @@ class Stmt(object):
                     f"Invalid type, expected {self.stmt.annotation.id}", self.stmt
                 )
         # Check that the integer literal, can be assigned to uint256 if necessary.
-        elif (self.stmt.annotation.id, sub.typ.subtype) == ('uint256', 'int128') and sub.typ.is_literal:
-            if not SizeLimits.in_bounds('uint256', sub.value):
-                raise InvalidLiteral(
-                    'Invalid uint256 assignment, value not in uint256 range.', self.stmt
-                )
-        print(str(self.stmt.annotation.id))
-        print(str(sub.typ.subtype))
-        if str(self.stmt.annotation.id) != str(sub.typ.subtype):
-            raise TypeMismatch(
-                f'Invalid type {sub.typ.subtype}, expected: {self.stmt.annotation.id}',
-                self.stmt,
-            )
-        else:
-            return True
+        #if ((self.stmt.annotation.id, sub.typ.subtype) == ('uint256', 'int128') and sub.typ.is_literal) or ((self.stmt.annotation.id, sub.typ.subtype) == ('uint256', 'int128') and sub.typ.is_literal):
+        #    if not SizeLimits.in_bounds('uint256', sub.value):
+        #        raise InvalidLiteral(
+        #            'Invalid uint256 assignment, value not in uint256 range.', self.stmt
+        #        )
+        #print(str(sub.typ.subtype))
+        #if str(self.stmt.annotation.id) != str(sub.typ.subtype):
+        #    raise TypeMismatch(
+        #        f'Invalid type {sub.typ.subtype}, expected: {self.stmt.annotation.id}',
+        #        self.stmt,
+        #    )
+        #else:
+        return True
 
     def _check_same_variable_assign(self, sub):
         lhs_var_name = self.stmt.target.id
@@ -206,24 +204,15 @@ class Stmt(object):
                     typ=BaseType('bytes32'),
                     pos=getpos(self.stmt),
                 )
-            print("here")
             self._check_valid_assign(sub)
-            print("here2")
             self._check_same_variable_assign(sub)
-            print("pos,typ,getpos(self.stmt)")
-            print(pos)
-            print(typ)
-            print(getpos(self.stmt))
             variable_loc = LLLnode.from_list(
                 pos,
                 typ=typ,
                 location='memory',
                 pos=getpos(self.stmt),
             )
-            print("variable_loc")
-            print(variable_loc)
             o = make_setter(variable_loc, sub, 'memory', pos=getpos(self.stmt))
-            print("return")
             return o
 
     def _check_implicit_conversion(self, var_id, sub):
@@ -293,11 +282,7 @@ class Stmt(object):
 
         block_scope_id = id(self.stmt)
         with self.context.make_blockscope(block_scope_id):
-            print("if parse")
-            print(self.stmt.test)
             test_expr = Expr.parse_value_expr(self.stmt.test, self.context)
-            print("test_expr")
-            print(test_expr)
             if not self.is_bool_expr(test_expr):
                 raise TypeMismatch('Only boolean expressions allowed', self.stmt.test)
             body = ['if', test_expr,
@@ -451,7 +436,6 @@ class Stmt(object):
         return arg_expr.value
 
     def parse_while(self):
-        print("parse_while")
         #if isinstance(self.stmt.test, vy_ast.Name):
            #if self.stmt.test.id not in self.context.vars:
                #raise VariableDeclarationException("Undefined variable in while condition: "+self.stmt.test.id, self.stmt.test)
@@ -459,7 +443,6 @@ class Stmt(object):
 
         block_scope_id = id(self.stmt)
         with self.context.make_blockscope(block_scope_id):
-            print("begin while with")
             test = self.stmt.test
             test_expr = Expr.parse_value_expr(test, self.context)
             if not self.is_bool_expr(test_expr):
@@ -473,18 +456,11 @@ class Stmt(object):
         return o
             #if isinstance(test, vy_ast.Name):
              #   start = LLLnode.from_list(0, typ=self.context.vars[test.id].typ, pos=getpos(self.stmt))
-              #  print(self.context.vars[test.id].__dict__)
             
 
 
     def parse_for(self):
         # Type 0 for, e.g. for i in list(): ...
-        #print("aaaaaaaa")
-        #print(self.stmt.to_dict)
-        print("parse for")
-        #print(self.stmt.iter)
-        print(self.stmt.target)
-        #print(self.stmt.body)
         if self._is_list_iter():
             return self.parse_for_list()
 

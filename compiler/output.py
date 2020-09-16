@@ -37,7 +37,6 @@ def mwp(compiler_data: CompilerData) -> str:
 def rank(compiler_data: CompilerData) -> str:
 	ast_dict = build_ast_dict(compiler_data)
 	#ps = ProofStructure(ast_dict)
-	print("In rank")
 	return
 
 def itrs(compiler_data: CompilerData) -> str:

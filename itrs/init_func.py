@@ -8,7 +8,10 @@ def get_env_var(procedure, state_variables, state_types, structs):
 	types = state_types
 	for obj in procedure['args']['args']:
 		variables[obj['arg']] = obj['arg']
-		types[obj['arg']] = obj['annotation']['id']
+		if 'annotation' in obj.keys():
+			types[obj['arg']] = obj['annotation']['id']
+		else:
+			types[obj['arg']] = "unspecified"
 	for s in ENV_VAR:
 		variables[s] = s
 	for s in CONSTS:
@@ -16,8 +19,6 @@ def get_env_var(procedure, state_variables, state_types, structs):
 	m = {}
 	variables = get_variables(procedure['body'].copy(), structs, types, variables, m)
 	#variables = create_len_var(variables, types, m)
-	print("out get var")
-	print(variables)
 	return variables, types, m
 
 
@@ -51,14 +52,9 @@ return a dict with all the local variables
 
 
 def get_variables(procedure, structs, types, variables = {}, m = {}):
-	print("get_variables")
-	print(procedure)
 	if isinstance(procedure, list):
 		for i in procedure:
-			print("in loop")
-			print(i)
 			variables = get_variables(i, structs, types, variables, m)
-			print("end loop")
 	elif procedure['ast_type'] == "If":
 		variables = get_variables(procedure['body'], structs, types, variables, m)
 		variables = get_variables(procedure['orelse'], structs, types, variables, m)
@@ -76,9 +72,7 @@ def get_variables(procedure, structs, types, variables = {}, m = {}):
 		#if procedure['value']['func']['id'] in self.structs:
 	elif procedure['ast_type'] == "Assign" or procedure['ast_type'] == "AnnAssign":
 		s = get_full_name(procedure['target'], variables, types)
-		print("fff")
-		print(s)
-		if len(s.split('_e(')) == 1:
+		if len(s.split('_e[')) == 1:
 			if 'value' in procedure.keys() and procedure['value']['ast_type'] == "List": #if a list is the right expression
 				#s = get_full_name(procedure['target'], variables, types)
 				variables[s] = s
@@ -99,9 +93,7 @@ def get_variables(procedure, structs, types, variables = {}, m = {}):
 					types[name] = types[obj]
 
 			elif 'value' in procedure.keys() and procedure['value']['ast_type'] == "Call": #if a struct is the right expression
-				print(structs.keys())
 				if procedure['value']['func']['id'] in structs.keys():
-					print("ent")
 					#s = get_full_name(procedure['target'], variables, types)
 					variables[s] = s
 					types[s] = "Struct"
@@ -111,8 +103,6 @@ def get_variables(procedure, structs, types, variables = {}, m = {}):
 							t = procedure['value']['args'][0]['values'][pos]['id']
 							if types[t] == "List" or types[t] == "Struct":
 								#i = structs[procedure['value']['func']['id']][pos]
-								print("ent2")
-								print(s+"."+i[0])
 								if types[t] == "List":
 									el = [key for key in variables.keys() if t+"_e" in key]
 								if types[t] == "Struct":
@@ -125,16 +115,11 @@ def get_variables(procedure, structs, types, variables = {}, m = {}):
 							variables = manage_list(procedure['value']['args'][0]['values'][pos]['value'], s+"."+i[0], variables, types, m)
 						variables[s+"."+i[0]] = s+"."+i[0]
 						types[s+"."+i[0]] = i[1]
-						print(variables)
-						print(types)
-					print("out")
 			else:
 				#s = get_full_name(procedure['target'], variables, types)
 				variables[s] = s
 				if 'annotation' in procedure.keys():
 					types[s] = procedure['annotation']['id']
-	print("ret var")
-	print(variables)
 	return variables
 	#elif procedure['ast_type'] == "AnnAssign":
 		#self.variables[procedure['target']['id']] = procedure['target']['id']
@@ -144,8 +129,6 @@ return the name of the variable, considering also subscripts(example, var[1]), s
 """
 
 def get_full_name(procedure, variables = {}, types = {}, first = 1):
-	print("getfullname")
-	print(procedure)
 	if procedure['ast_type'] == "BinOp":
 		s = get_full_name(procedure['left'], variables, types, 0) + get_op(procedure) + get_full_name(procedure['right'], variables, types, 0)
 	if procedure['ast_type'] == "Name":
@@ -158,13 +141,12 @@ def get_full_name(procedure, variables = {}, types = {}, first = 1):
 		s = get_full_name(procedure['value'], variables, types, 0)+"_e"+get_full_name(procedure['slice'], variables, types, 0)
 	if procedure['ast_type'] == "Index":
 		if procedure['value']['ast_type'] != "Int":
-			s = "("+get_full_name(procedure['value'], variables, types, 0)+")"
+			s = "["+get_full_name(procedure['value'], variables, types, 0)+"]"
 		else:
 			s = get_full_name(procedure['value'], variables, types, 0)
 
 	if first:
-		print("boh")
-		if "_e(" in s:
+		if "_e[" in s:
 			variables[s] = s
 			types[s] = "NameIndex"
 

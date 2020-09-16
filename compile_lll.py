@@ -172,20 +172,7 @@ def compile_to_assembly(code, withargs=None, existing_labels=None, break_dest=No
         o = []
         loops = num_to_bytearray(code.args[2].value)
         start, continue_dest, end = mksymbol(), mksymbol(), mksymbol()
-        print("code.args[0] withargs existing_labels breakdest height")
-        print(code.args[0])
-        print(withargs)
-        print(existing_labels)
-        print(break_dest)
-        print(height)
-        print("code.args[1] withargs existing_labels breakdest height+1")
-        print(code.args[1])
-        print(withargs)
-        print(existing_labels)
-        print(break_dest)
-        print(height+1)
         o.extend(compile_to_assembly(code.args[0], withargs, existing_labels, break_dest, height))
-        print(o)
         o.extend(compile_to_assembly(
             code.args[1],
             withargs,
@@ -193,7 +180,6 @@ def compile_to_assembly(code, withargs=None, existing_labels=None, break_dest=No
             break_dest,
             height + 1,
         ))
-        print(o)
         o.extend(['PUSH' + str(len(loops))] + loops)
         # stack: memloc, startvalue, rounds
         o.extend(['DUP2', 'DUP4', 'MSTORE', 'ADD', start, 'JUMPDEST'])
@@ -211,8 +197,6 @@ def compile_to_assembly(code, withargs=None, existing_labels=None, break_dest=No
         ])
         # stack: len(loops), index memory address, new index
         o.extend(['DUP2', 'EQ', 'ISZERO', start, 'JUMPI', end, 'JUMPDEST', 'POP', 'POP'])
-        print("final")
-        print(o)
         return o
     # Continue to the next iteration of the for loop
     elif code.value == 'continue':
