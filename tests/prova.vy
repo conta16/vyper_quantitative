@@ -48,7 +48,7 @@ def binary_search(item: int128):
 	middle: int128 = 0
 	r: int128 = -1
 	while begin <= end and r < 0:
-		middle = end-begin
+		middle = (begin+end)/2 #this gives problems, see TODO file
 		if lst[middle] == item:
 			r = 0
 		else:
