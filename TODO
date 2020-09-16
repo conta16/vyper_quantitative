@@ -1,0 +1,3 @@
+- Make changes for list parsing. At the moment, we can't have anything other than variables as subscript's indexes.
+- KoAT doesn't use / or * keywords. Contact them in order to see what they use for mult/div
+- The code needs to be refactored. A lot
