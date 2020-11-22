@@ -73,5 +73,7 @@ def parse_function(code, sigs, origcode, global_ctx, _vars=None):
     o.total_gas = o.gas + calc_mem_gas(
         o.context.memory_allocator.get_next_memory_position()
     )
+    print("total gas")
+    print(o.total_gas)
     o.func_name = sig.name
     return o

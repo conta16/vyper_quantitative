@@ -96,6 +96,7 @@ class CompilerData:
         self._lll_nodes, self._lll_runtime = generate_lll_nodes(
             self.source_code, self.global_ctx
         )
+        print(self._lll_runtime.__dict__)
 
     @property
     def lll_nodes(self) -> parser.LLLnode:

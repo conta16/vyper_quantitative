@@ -6,11 +6,12 @@ class ITRS_global:
 
 	def __init__(self, procedure):
 		self.state_vars, self.state_types, self.functions, self.structs = self.get_globals(procedure)
+		self.bounds = []
 		self.itrs = [] #itrs will have the dicts of the parsed whiles in each function
 		for i in self.functions:
 			self.itrs.append(ITRS(i, self.state_vars.copy(), self.state_types.copy(), self.structs.copy()).run())
 
-		self.itrs = KOAT().get_bounds(self.itrs)
+		self.bounds = KOAT().get_bounds(self.itrs)
 
 	"""
 	return global variables. functions, structs

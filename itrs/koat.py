@@ -9,9 +9,12 @@ class KOAT:
 	"""
 
 	def get_bounds(self, itrs):
+		bounds = []
 		for func in itrs:
 			for k in func.keys():
-				func[k] = self.itrs_to_bound(func[k])
+				b = self.itrs_to_bound(func[k])
+				bounds.append(b)
+		return bounds
 
 	def itrs_to_bound(self, code):
 		file_name = 'tmp.koat'
@@ -36,7 +39,7 @@ class KOAT:
 		elif outcome == "NO":
 			bound = "-1"
 		elif outcome == "MAYBE":
-			bound = "Couldn't calculate"
+			bound = "-1"
 
 		print("bound")
 		print(bound)

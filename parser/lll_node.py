@@ -229,6 +229,7 @@ class LLLnode:
             self.valency = valency
 
         self.gas += self.add_gas_estimate
+        print(self.gas)
 
 
     def __getitem__(self, i):
