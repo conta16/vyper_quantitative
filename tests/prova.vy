@@ -95,23 +95,23 @@ def __init__(_beneficiary: address, _bidding_time: uint256):
 #			else:
 #				end = middle-1
 
-@private
-def s():
-        lst: int128[9] = [2,5,9,15,44,67,111,423,543]
-        n: int128 = 9
-        h: int128 = 1
-        p: int128 = lst[h]
+#@private
+#def s():
+#        lst: int128[9] = [2,5,9,15,44,67,111,423,543]
+#        n: int128 = 9
+#        h: int128 = 1
+#        p: int128 = lst[h]
 #        while h >= 1:
-        i: int128 = h+1
+#        i: int128 = h+1
                 #while i < n:
-        tmp: int128 = lst[i]
-        j: int128 = i
+#        tmp: int128 = lst[i]
+#        j: int128 = i
                         #while j > h: # and lst[j-h] > tmp:
                         #       lst[j] = lst[j-h]
                         #       j = j - h
-        lst[j] = tmp
-        i += 1
-        h = h-3
+#        lst[j] = tmp
+#        i += 1
+#        h = h-3
 
 @private
 def shellsort():
@@ -127,9 +127,9 @@ def shellsort():
 		while i < n:
 			tmp: int128 = lst[i]
 			j: int128 = i
-			#while j > h: # and lst[j-h] > tmp:
-			#	lst[j] = lst[j-h]
-			#	j = j - h
+			while j > h: # and lst[j-h] > tmp:
+				lst[j] = lst[j-h]
+				j = j - h
 			lst[j] = tmp
 			i += 1
 		h = h-3
@@ -179,6 +179,23 @@ def shellsort():
 #			j += 1
 #		i += 1
 
+
+#def knapsack():
+#	v: int128[4] = [2,9,5,5]
+#	p: int128[4] = [6,8,4,1]
+		
+#	n: int128 = 4
+#	i: int128 = 1
+#	C: int128 = 15
+#	x: int128[4] = [0,0,0,0]
+#	while i<=n and C>0:
+#		if v[i] >= C:
+#			x[i] = C/v[i]
+#			C = 0
+#		else:
+#			x[i] = 1
+#			C = C - v[i]
+#		i += 1
 
 #@private
 #def func():

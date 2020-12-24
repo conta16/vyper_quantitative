@@ -29,8 +29,6 @@ class KOAT:
 		bound = bound.split('\n', 1)[0]
 		outcome = bound.split('(', 1)[0]
 
-		print("outcome")
-		print(outcome)
 
 		if outcome == "YES":
 			bound = bound.split(',',2)[1]
@@ -41,8 +39,6 @@ class KOAT:
 		elif outcome == "MAYBE":
 			bound = "-1"
 
-		print("bound")
-		print(bound)
 
 		os.remove("tmp.koat")
 

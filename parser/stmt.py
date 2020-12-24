@@ -124,19 +124,6 @@ class Stmt(object):
                 raise TypeMismatch(
                     f"Invalid type, expected {self.stmt.annotation.id}", self.stmt
                 )
-        # Check that the integer literal, can be assigned to uint256 if necessary.
-        #if ((self.stmt.annotation.id, sub.typ.subtype) == ('uint256', 'int128') and sub.typ.is_literal) or ((self.stmt.annotation.id, sub.typ.subtype) == ('uint256', 'int128') and sub.typ.is_literal):
-        #    if not SizeLimits.in_bounds('uint256', sub.value):
-        #        raise InvalidLiteral(
-        #            'Invalid uint256 assignment, value not in uint256 range.', self.stmt
-        #        )
-        #print(str(sub.typ.subtype))
-        #if str(self.stmt.annotation.id) != str(sub.typ.subtype):
-        #    raise TypeMismatch(
-        #        f'Invalid type {sub.typ.subtype}, expected: {self.stmt.annotation.id}',
-        #        self.stmt,
-        #    )
-        #else:
         return True
 
     def _check_same_variable_assign(self, sub):

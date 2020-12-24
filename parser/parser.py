@@ -113,6 +113,7 @@ def parse_other_functions(o,
             parse_function(_def, {**{'self': sigs}, **external_contracts}, origcode, global_ctx)
         )
         sub[-1].total_gas += add_gas
+        #sub[-1].total_bgas += 
         add_gas += 30
         for sig in sig_utils.generate_default_arg_sigs(_def, external_contracts, global_ctx):
             sig.gas = sub[-1].total_gas

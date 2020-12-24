@@ -3,6 +3,8 @@ import ast
 import warnings
 from typing import Optional, Tuple
 
+from vyper.itrs.itrs_global import ITRS_global
+from vyper.compiler import output
 from vyper import ast as vy_ast
 from vyper import compile_lll, optimizer
 from vyper.parser import parser
@@ -40,12 +42,15 @@ class CompilerData:
         Runtime bytecode
     """
 
+    bounds = []
+
     def __init__(
         self,
         source_code: str,
         contract_name: str = "VyperContract",
         interface_codes: Optional[InterfaceImports] = None,
         source_id: int = 0,
+        ast: str = "",
     ) -> None:
         """
         Initialization method.
@@ -67,6 +72,10 @@ class CompilerData:
         self.source_code = source_code
         self.interface_codes = interface_codes
         self.source_id = source_id
+        if ast != "":
+            CompilerData.bounds = ITRS_global(ast['ast']['body']).bounds
+            print(CompilerData.bounds)
+
 
     @property
     def vyper_module(self) -> vy_ast.Module:
@@ -80,7 +89,6 @@ class CompilerData:
 
         if not hasattr(self, "_vyper_module_folded"):
             self._vyper_module_folded = generate_folded_ast(self.vyper_module)
-        #for item in self._vyper_module_folded:
         return self._vyper_module_folded
 
     @property
@@ -96,7 +104,6 @@ class CompilerData:
         self._lll_nodes, self._lll_runtime = generate_lll_nodes(
             self.source_code, self.global_ctx
         )
-        print(self._lll_runtime.__dict__)
 
     @property
     def lll_nodes(self) -> parser.LLLnode:

@@ -11,7 +11,15 @@ class ITRS_global:
 		for i in self.functions:
 			self.itrs.append(ITRS(i, self.state_vars.copy(), self.state_types.copy(), self.structs.copy()).run())
 
+		print("itrk")
+		print(self.itrs)
 		self.bounds = KOAT().get_bounds(self.itrs)
+		i = 0
+		while i < len(self.bounds):
+			if self.bounds[i] == "":
+				self.bounds = self.bounds[:i]+self.bounds[i+1:]
+				i -= 1
+			i += 1
 
 	"""
 	return global variables. functions, structs

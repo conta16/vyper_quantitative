@@ -1,6 +1,9 @@
 import re
 from typing import Any, List, Optional, Tuple, Union
 
+import vyper.compiler
+#from vyper.compiler.phases import CompilerData
+
 from vyper.exceptions import CompilerPanic
 from vyper.opcodes import get_comb_opcodes
 from vyper.settings import VYPER_COLOR_OUTPUT
@@ -40,6 +43,7 @@ class NullAttractor(int):
 class LLLnode:
     repr_show_gas = False
     gas: int
+    bgas: str
     valency: int
     args: List['LLLnode']
     value: Union[str, int]
@@ -56,7 +60,7 @@ class LLLnode:
                  valency: Optional[int] = None):
         if args is None:
             args = []
-
+        #print(mk.__dict__)
         self.value = value
         self.args = args
         self.typ = typ
@@ -70,6 +74,8 @@ class LLLnode:
 
         # Optional annotation properties for gas estimation
         self.total_gas = None
+        self.bgas = ""
+        self.total_bgas = None
         self.func_name = None
         # Determine this node's valency (1 if it pushes a value on the stack,
         # 0 otherwise) and checks to make sure the number and valencies of
@@ -133,6 +139,18 @@ class LLLnode:
                 if len(self.args) not in (2, 3):
                     raise CompilerPanic("If can only have 2 or 3 arguments")
                 self.valency = self.args[1].valency
+            elif self.value == "while":
+                from vyper.compiler.phases import CompilerData
+                compiler_data = CompilerData("")
+                print("while")
+                print(compiler_data.bounds)
+                if ("-1" == a for a in compiler_data.bounds):
+                        self.bgas = "0"
+                else:
+                        self.bgas = compiler_data.bounds[0] + "*" + str((self.args[1].gas + 50) + 30)
+                        compiler_data.bounds = compiler_data.bounds[1:]
+                self.gas = 0
+
             # With statements: with <var> <initial> <statement>
             elif self.value == 'with':
                 if len(self.args) != 3:
@@ -229,7 +247,6 @@ class LLLnode:
             self.valency = valency
 
         self.gas += self.add_gas_estimate
-        print(self.gas)
 
 
     def __getitem__(self, i):

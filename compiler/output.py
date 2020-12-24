@@ -166,7 +166,8 @@ def _compress_source_map(code, pos_map, jump_map, source_id):
 
 
 def build_bytecode_output(compiler_data: CompilerData) -> str:
-    return f"0x{compiler_data.bytecode.hex()}"
+    cd = compiler_data.bytecode
+    return f"0x{cd.hex()}"
 
 
 def build_bytecode_runtime_output(compiler_data: CompilerData) -> str:
